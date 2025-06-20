@@ -14,17 +14,17 @@ Github link to repo: https://github.com/tunngc0941/OOP_N02_T3_2_2025_Group00
 
 Giay
 
--Ma_Giay
--Ten_Giay
--Thuong_Hieu
--Size
--Gia_Ban
--So_Luong
+- Ma_Giay
+- Ten_Giay
+- Thuong_Hieu
+- Size
+- Gia_Ban
+- So_Luong
 
 KhachHang
 
--Ten
--So_Dien_Thoai
+- Ten
+- So_Dien_Thoai
 
 DonHang
 
