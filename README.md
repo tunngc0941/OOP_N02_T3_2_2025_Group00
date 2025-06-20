@@ -8,4 +8,7 @@ Nhom 0:
 
 Github link to repo: https://github.com/tunngc0941/OOP_N02_T3_2_2025_Group00
 
-Ứng dụng: Quản lý bán vé máy bay
+Ứng dụng: Quản lý giày
+
+#Phân tích đối tượng:
+
