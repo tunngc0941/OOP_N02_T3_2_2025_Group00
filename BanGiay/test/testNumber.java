@@ -1,6 +1,6 @@
-public class test{
+public class testNumber{
      
-        public static testNgoc(){
+        public static void testNgoc(){
             Number n1 = new Number();
             Number n2 = new Number();
             n1.i = 2;
