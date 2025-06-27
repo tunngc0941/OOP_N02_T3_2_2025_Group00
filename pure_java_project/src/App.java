@@ -9,8 +9,8 @@ public class App{
             System.out.println("Random number: " + x);
             StringTest.test();
             ShortCircuitTest.test();
-            CastingTest.testDouble();
-            CastingTest.testCasting();
+            CastingTest.testTinhToan();
+            CastingTest.testCT();
             CakeCase.cake(1);
             SwitchCake.switchCase();
         }
