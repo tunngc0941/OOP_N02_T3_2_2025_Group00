@@ -1,3 +1,7 @@
+import Number;
+import PassObject;
+
+package Test;
 public class testPassObject{
 
 
