@@ -3,13 +3,13 @@ public class SwitchCake {
         int choice = 2;
         switch (choice) {
             case 1:
-                System.out.println("Ban chon Chocolate.");
+                System.out.println("Ban chon banh Socola.");
                 break;
             case 2:
-                System.out.println("Ban da chon Vanilla.");
+                System.out.println("Ban da chon Banh Vani.");
                 break;
             default:
-                System.out.println("Invalid choice.");
+                System.out.println("CHon sai roi chon lai di.");
         }
     }
 }

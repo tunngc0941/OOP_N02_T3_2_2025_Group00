@@ -1,11 +1,11 @@
 public class CakeCase {
     public static void cake(int choice) {
         if (choice == 1) {
-            System.out.println("Chocolate Cake Selected");
+            System.out.println("Ban hay lua chon banh");
         } else if (choice == 2) {
-            System.out.println("Vanilla Cake Selected");
+            System.out.println("Ban da chon dung roi");
         } else {
-            System.out.println("No Cake Selected");
+            System.out.println("Khong co banh do dau");
         }
     }
 }
