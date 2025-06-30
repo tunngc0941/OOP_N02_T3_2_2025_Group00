@@ -14,6 +14,7 @@ public class App{
             //CakeCase.cake(1);
             //SwitchCake.switchCase();
             testBook.TestTT(); 
+            TestLeaf.Test2();
         }
 }
 
