@@ -12,30 +12,25 @@ Github link to repo: https://github.com/tunngc0941/OOP_N02_T3_2_2025_Group00
 
 #Phân tích đối tượng:
 
-Giay
+SanPham
 
-- Ma_Giay
-- Ten_Giay
-- Thuong_Hieu
+- Ma_SP
+- Ten_SP
 - Size
 - Gia_Ban
 - So_Luong
 
 KhachHang
 
-- Ten
+-MaKH
+- TenKH
 - So_Dien_Thoai
 
 DonHang
 
 - Khach_Hang
-- Danh_Sach_Giay
+- San_Pham
 - Tong_tien
 
-CuaHang
 
-- Danh_Sach_Giay
-- Danh_Sach_Don_Hang
-- Them_Don_Hang
-- Doanh_Thu
 
