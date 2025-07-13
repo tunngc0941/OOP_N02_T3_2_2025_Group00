@@ -4,8 +4,20 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-        
-
+        {
+            "type": "java",
+            "name": "App",
+            "request": "launch",
+            "mainClass": "src.App",
+            "projectName": "OOP_N02_T3_2_2025_Group00_f8843c4e"
+        },
+        {
+            "type": "java",
+            "name": "App",
+            "request": "launch",
+            "mainClass": "App",
+            "projectName": "OOP_N02_T3_2_2025_Group00_f8843c4e"
+        },
         {
             "type": "java",
             "name": "Current File",
