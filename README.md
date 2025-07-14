@@ -10,6 +10,10 @@ Github link to repo: https://github.com/tunngc0941/OOP_N02_T3_2_2025_Group00
 
 Ứng dụng: Quản lý giày
 
+Sơ Đồ Chức Năng 
+
+<img src='anh/Sơ Đồ Chức Năng_.jpg'>
+
 #Phân tích đối tượng:
 
 SanPham
