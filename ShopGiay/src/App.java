@@ -1,12 +1,15 @@
-package src;
-
 public class App {
     public static void main(String[] args) {
-        KhachHang kh1 = new KhachHang("KH001", "Nguyễn Văn A", "0909123456");
+        
+        SanPham sp = new SanPham("SP001", "Áo sơ mi", "M", 200000, 5);
 
-        System.out.println("=== Thông tin khách hàng ===");
-        System.out.println("Mã KH: " + kh1.getMaKH());
-        System.out.println("Tên KH: " + kh1.getTenKH());
-        System.out.println("SĐT: " + kh1.getSoDienThoai());
+       
+        KhachHang kh = new KhachHang("KH001", "Trần Thị B", "0987654321");
+
+        System.out.println("=== Thông tin sản phẩm ===");
+        sp.hienThiThongTin();
+
+        System.out.println("\n=== Thông tin khách hàng ===");
+        kh.hienThiThongTin();
     }
 }

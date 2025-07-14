@@ -1,5 +1,3 @@
-package src;
-
 public class KhachHang {
     private String maKH;
     private String tenKH;
@@ -11,12 +9,21 @@ public class KhachHang {
         this.soDienThoai = soDienThoai;
     }
 
-    public String getMaKH() { return maKH; }
-    public String getTenKH() { return tenKH; }
-    public String getSoDienThoai() { return soDienThoai; }
+    public String getMaKH() {
+        return maKH;
+    }
 
-    @Override
-    public String toString() {
-        return tenKH + " - " + soDienThoai;
+    public String getTenKH() {
+        return tenKH;
+    }
+
+    public String getSoDienThoai() {
+        return soDienThoai;
+    }
+
+    public void hienThiThongTin() {
+        System.out.println("Mã KH: " + maKH);
+        System.out.println("Tên KH: " + tenKH);
+        System.out.println("Số điện thoại: " + soDienThoai);
     }
 }
