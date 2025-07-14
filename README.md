@@ -30,6 +30,10 @@ Sơ đồ hoạt động
 
 KhachHang
 
+Sơ Đồ Hoạt Động 
+
+<img src='anh/KhachHang.jpg'>
+
 -MaKH
 - TenKH
 - So_Dien_Thoai
