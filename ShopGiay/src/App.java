@@ -1,7 +1,7 @@
 public class App {
     public static void main(String[] args) {
         
-        SanPham sp = new SanPham("SP001", "Áo sơ mi", "M", 200000, 5);
+        SanPham sp = new SanPham("SP001", "Giay the thao", "39", 200000, 5);
 
        
         KhachHang kh = new KhachHang("KH001", "Trần Thị B", "0987654321");
