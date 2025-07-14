@@ -1,15 +1,13 @@
 public class App {
     public static void main(String[] args) {
-        
-        SanPham sp = new SanPham("SP001", "Giay the thao", "39", 200000, 5);
+        // Tạo khách hàng
+        KhachHang kh = new KhachHang("KH001", "Nguyễn Văn A", "0901234567");
 
-       
-        KhachHang kh = new KhachHang("KH001", "Trần Thị B", "0987654321");
+        // Tạo sản phẩm
+        SanPham sp = new SanPham("SP001", "Giay bup be", "39", 150000, 20);
 
-        System.out.println("=== Thông tin sản phẩm ===");
-        sp.hienThiThongTin();
-
-        System.out.println("\n=== Thông tin khách hàng ===");
-        kh.hienThiThongTin();
+        // Tạo giao dịch: khách hàng mua 3 sản phẩm
+        GiaoDich gd = new GiaoDich(kh, sp, 3);
+        gd.hienThiGiaoDich();
     }
 }
