@@ -18,6 +18,10 @@ Sơ Đồ Chức Năng
 
 SanPham
 
+Sơ đồ hoạt động 
+
+<img src='anh/SanPham.jpg'>
+
 - Ma_SP
 - Ten_SP
 - Size
