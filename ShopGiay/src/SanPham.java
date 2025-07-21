@@ -3,14 +3,12 @@ public class SanPham {
     private String tenSp;
     private double giaBan;
     private int size;
-    private int soLuong;
 
-    public SanPham(String maSp, String tenSp, String giaBan, int size, int soLuong) {
+    public SanPham(String maSp, String tenSp, double giaBan, int size) {
         this.maSp = maSp;
         this.tenSp = tenSp;
         this.giaBan = giaBan;
         this.size = size;
-        this.soLuong = soLuong;
     }
 
     public void setMaSp(String maSp) {
@@ -29,10 +27,6 @@ public class SanPham {
         this.giaBan = giaBan;
     }
 
-    public void setSoLuong(int soLuong) {
-        this.soLuong = soLuong;
-    }
-
     public String getMaSp() {
         return maSp;
     }
@@ -45,10 +39,6 @@ public class SanPham {
         return giaBan;
     }
 
-    public int getSoLuong() {
-        return soLuong;
-    }
-
     public int getSize() {
         return size;
     }
@@ -57,7 +47,6 @@ public class SanPham {
         System.out.println("Thong tin san pham:");
         System.out.println("Ma SanPham: " + maSp);
         System.out.println("Ten SanPham: " + tenSp);
-        System.out.println("So luong: " + soLuong);
         System.out.println("Gia ban: " + giaBan);
         System.out.println("Size: " + size);
     }

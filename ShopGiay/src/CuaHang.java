@@ -6,12 +6,12 @@ public class CuaHang {
 
     public void themSanPham(SanPham sanPham) {
         danhSachSanPham.add(sanPham);
-        System.out.println("Đã thêm sản phẩm: " + sanPham.getTenSanPham());
+        System.out.println("Đã thêm sản phẩm: " + sanPham.getTenSp());
     }
 
     public void banSanPham(KhachHang khachHang, String tenSanPham, int soLuong) {
         for (SanPham sp : danhSachSanPham) {
-            if (sp.getTenSanPham().equalsIgnoreCase(tenSanPham)) {
+            if (sp.getTenSp().equalsIgnoreCase(tenSanPham)) {
                 GiaoDich gd = new GiaoDich(khachHang, sp, soLuong);
                 danhSachGiaoDich.add(gd);
                 gd.inHoaDon();
@@ -24,7 +24,7 @@ public class CuaHang {
     public void hienThiSanPham() {
         System.out.println("===== DANH SÁCH SẢN PHẨM TRONG KHO =====");
         for (SanPham sp : danhSachSanPham) {
-            sp.hienThiThongTin();
+            sp.display();
         }
     }
 

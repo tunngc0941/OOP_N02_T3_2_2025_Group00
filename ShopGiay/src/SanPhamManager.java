@@ -13,7 +13,7 @@ public class SanPhamManager {
         // choice();
         } catch(Exception e) {
             e.printStackTrace();
-            return [];
+            return;
         }
     }
 
@@ -31,15 +31,16 @@ public class SanPhamManager {
         // choice();
         } catch(Exception e) {
             e.printStackTrace();
-            return [];
+            return;
         }
     }
 
     // UPDATE
+  
     public ArrayList<SanPham> suaSanPham(String giayID) {
         try {
-            for (int i = 0; i < danhSachSanPham.sizr(); i++) {
-            if (danhSachSanPham.get(i).ID.equals(giayID)) {
+            for (int i = 0; i < danhSachSanPham.size(); i++) {
+            if (danhSachSanPham.get(i).maSp.equals(giayID)) {
                 System.out.print("Nhap ten moi: ");
                 sp.setTenSp(scanner.nextLine());
                 System.out.print("Nhap gia ban moi: ");
@@ -56,7 +57,6 @@ public class SanPhamManager {
         // choice();
         } catch (Exception e) {
             e.printStackTrace();
-            return [];
         }
     }
 
@@ -74,7 +74,7 @@ public class SanPhamManager {
         // choice();
         } catch(Exception e) {
             e.printStackTrace();
-            return [];
+            return;
         }
     }
 
