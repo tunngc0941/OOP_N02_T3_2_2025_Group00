@@ -37,5 +37,6 @@ public class KhachHang {
         System.out.println("Mã KH: " + maKH);
         System.out.println("Tên KH: " + tenKH);
         System.out.println("Số điện thoại: " + soDienThoai);
+
     }
 }

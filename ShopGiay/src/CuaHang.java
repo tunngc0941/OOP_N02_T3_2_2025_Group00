@@ -25,6 +25,7 @@ public class CuaHang {
         System.out.println("===== DANH SÁCH SẢN PHẨM TRONG KHO =====");
         for (SanPham sp : danhSachSanPham) {
             sp.display();
+            System.out.println("");
         }
     }
 

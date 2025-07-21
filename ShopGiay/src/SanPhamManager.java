@@ -10,12 +10,11 @@ public class SanPhamManager {
         try {
         danhSachSanPham.add(sp);
         System.out.println("Them san pham thanh cong!");
-        return danhSachSanPham;
         // choice();
         } catch(Exception e) {
             e.printStackTrace();
-            return danhSachSanPham;
         }
+        return danhSachSanPham;
     }
 
     // READ
@@ -28,12 +27,12 @@ public class SanPhamManager {
                 sp.display();
                 System.out.println("---------------");
             }
-            return danhSachSanPham;
         }
         // choice();
         } catch(Exception e) {
             e.printStackTrace();
         }
+        return danhSachSanPham;
     }
 
     // UPDATE
@@ -47,14 +46,13 @@ public class SanPhamManager {
                 System.out.print("Nhập giá mới: ");
                 sp.setGiaBan(Double.parseDouble(scanner.nextLine()));
                 System.out.println(" Đã cập nhật.");
-                return danhSachSanPham;
             }
         }
         System.out.println(" Không tìm thấy sản phẩm voi ma:" + giayID);
         } catch (Exception e) {
             e.printStackTrace();
-            return danhSachSanPham;
         }
+        return danhSachSanPham;
     }
 
     // DELETE
