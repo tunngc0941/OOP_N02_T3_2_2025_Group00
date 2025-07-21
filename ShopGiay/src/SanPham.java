@@ -1,18 +1,18 @@
 public class SanPham {
-    private String maSp;
+    private String ID;
     private String tenSp;
     private double giaBan;
     private int size;
 
-    public SanPham(String maSp, String tenSp, double giaBan, int size) {
-        this.maSp = maSp;
+    public SanPham(String ID, String tenSp, double giaBan, int size) {
+        this.ID = ID;
         this.tenSp = tenSp;
         this.giaBan = giaBan;
         this.size = size;
     }
 
-    public void setMaSp(String maSp) {
-        this.maSp = maSp;
+    public void setMaSp(String ID) {
+        this.ID = ID;
     }
 
     public void setTenSp(String tenSp) {
@@ -27,8 +27,8 @@ public class SanPham {
         this.giaBan = giaBan;
     }
 
-    public String getMaSp() {
-        return maSp;
+    public String getID() {
+        return ID;
     }
 
     public String getTenSp() {
@@ -45,7 +45,7 @@ public class SanPham {
 
     public void display() {
         System.out.println("Thong tin san pham:");
-        System.out.println("Ma SanPham: " + maSp);
+        System.out.println("Ma SanPham: " + ID);
         System.out.println("Ten SanPham: " + tenSp);
         System.out.println("Gia ban: " + giaBan);
         System.out.println("Size: " + size);

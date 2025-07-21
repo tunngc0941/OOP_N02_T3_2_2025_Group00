@@ -10,10 +10,11 @@ public class SanPhamManager {
         try {
         danhSachSanPham.add(sp);
         System.out.println("Them san pham thanh cong!");
+        return danhSachSanPham;
         // choice();
         } catch(Exception e) {
             e.printStackTrace();
-            return;
+            return danhSachSanPham;
         }
     }
 
@@ -27,11 +28,11 @@ public class SanPhamManager {
                 sp.display();
                 System.out.println("---------------");
             }
+            return danhSachSanPham;
         }
         // choice();
         } catch(Exception e) {
             e.printStackTrace();
-            return;
         }
     }
 
@@ -39,42 +40,33 @@ public class SanPhamManager {
   
     public ArrayList<SanPham> suaSanPham(String giayID) {
         try {
-            for (int i = 0; i < danhSachSanPham.size(); i++) {
-            if (danhSachSanPham.get(i).maSp.equals(giayID)) {
-                System.out.print("Nhap ten moi: ");
+            for (SanPham sp : danhSachSanPham) {
+            if (sp.getID().equalsIgnoreCase(giayID)) {
+                System.out.print("Nhập tên mới: ");
                 sp.setTenSp(scanner.nextLine());
-                System.out.print("Nhap gia ban moi: ");
+                System.out.print("Nhập giá mới: ");
                 sp.setGiaBan(Double.parseDouble(scanner.nextLine()));
-                System.out.print("Nhap size moi: ");
-                sp.setSize(Integer.parseInt(scanner.nextLine()));
-                System.out.print("Nhap so luong moi: ");
-                sp.setSoLuong(Integer.parseInt(scanner.nextLine()));
-                System.out.println("Cap nhat thanh cong!");
+                System.out.println(" Đã cập nhật.");
                 return danhSachSanPham;
             }
         }
-        System.out.println("Khong tim thay san pham voi ma: " + maSp);
-        // choice();
+        System.out.println(" Không tìm thấy sản phẩm voi ma:" + giayID);
         } catch (Exception e) {
             e.printStackTrace();
+            return danhSachSanPham;
         }
     }
 
     // DELETE
     public ArrayList<SanPham> xoaSanPham(String giayID) {
         try {
-            for (int i = 0; i < danhSachSanPham.size(); i++) {
-            if (danhSachSanPham.get(i).ID.equals(giayID))) {
-                danhSachSanPham.remove(i);
-                System.out.println("Xoa thanh cong!");
-                return danhSachSanPham;
-            }
-        }
-        System.out.println("Khong tim thay san pham voi ma: " + maSp);
+            danhSachSanPham.removeIf(sp -> sp.getID().equalsIgnoreCase(giayID));
+            System.out.println("Xoa san pham thanh cong.");
+            return danhSachSanPham;
         // choice();
         } catch(Exception e) {
             e.printStackTrace();
-            return;
+            return danhSachSanPham;
         }
     }
 

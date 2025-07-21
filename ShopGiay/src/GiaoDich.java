@@ -34,20 +34,21 @@ public class GiaoDich {
     }
 
    public void inHoaDon() {
-System.out.println("=========== HÓA ĐƠN BÁN HÀNG ===========");
-System.out.println("Ngày: " + LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")));
-System.out.println("----------------------------------------");
+        System.out.println("=========== HÓA ĐƠN BÁN HÀNG ===========");
+        System.out.println("Ngày: " + LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")));
+        System.out.println("----------------------------------------");
 
 
-System.out.println(">> Thông tin khách hàng:");
-khachHang.hienThiThongTin();
+        System.out.println(">> Thông tin khách hàng:");
+        khachHang.hienThiThongTin();
 
 
-System.out.println("\n>> Thông tin sản phẩm:");
-System.out.printf("%-15s %-10s %-10s %-10s\n", "Tên SP", "Đơn giá", "Số lượng", "Thành tiền");
-System.out.printf("%-15s %-10.2f %-10d %-10.2f\n",sanPham.getTenSp(),sanPham.getGiaBan(),soLuongMua,tinhTongTien());
+        System.out.println("\n>> Thông tin sản phẩm:");
+        System.out.printf("%-15s %-10s %-10s %-10s\n", "Tên SP", "Đơn giá", "Số lượng", "Thành tiền");
+        System.out.printf("%-15s %-10.2f %-10d %-10.2f\n",sanPham.getTenSp(),sanPham.getGiaBan(),soLuongMua,tinhTongTien());
 
-System.out.println("----------------------------------------");
-System.out.printf("TỔNG CỘNG: %.2f VND\n", tinhTongTien());
-System.out.println("========================================");
+        System.out.println("----------------------------------------");
+        System.out.printf("TỔNG CỘNG: %.2f VND\n", tinhTongTien());
+        System.out.println("========================================");
+    }
 }

@@ -64,7 +64,7 @@ public class ManagerKhachHang {
             } else {
                 System.out.println("Danh sach khach hang:");
                 for (KhachHang c : list) {
-                    c.hienThi();
+                    c.hienThiThongTin();
                 }
             }
         } catch (Exception e) {
@@ -94,36 +94,36 @@ public class ManagerKhachHang {
         }
     }
 
-    public void menu() {
-        while (true) {
-            try {
-                System.out.println("\n--- QUAN LY KHACH HANG ---");
-                System.out.println("1. Them khach hang");
-                System.out.println("2. Sua khach hang");
-                System.out.println("3. Xoa khach hang");
-                System.out.println("4. Hien thi danh sach");
-                System.out.println("0. Thoat");
-                System.out.print("Chon chuc nang: ");
+    // public void menu() {
+    //     while (true) {
+    //         try {
+    //             System.out.println("\n--- QUAN LY KHACH HANG ---");
+    //             System.out.println("1. Them khach hang");
+    //             System.out.println("2. Sua khach hang");
+    //             System.out.println("3. Xoa khach hang");
+    //             System.out.println("4. Hien thi danh sach");
+    //             System.out.println("0. Thoat");
+    //             System.out.print("Chon chuc nang: ");
 
-                int choice = Integer.parseInt(scanner.nextLine());
+    //             int choice = Integer.parseInt(scanner.nextLine());
 
-                switch (choice) {
-                    case 1 -> addKhachHang();
-                    case 2 -> suaKhachHang();
-                    case 3 -> deleteKhachHang();
-                    case 4 -> hienThiThongTin();
-                    case 0 -> {
-                        System.out.println("Tam biet!");
-                        return;
-                    }
-                    default -> System.out.println("Lua chon khong hop le.");
-                }
-            } catch (NumberFormatException e) {
-                System.out.println("Vui long nhap so.");
-            } catch (Exception e) {
-                System.out.println("Loi khong xac dinh.");
-                e.printStackTrace();
-            }
-        }
-    }
+    //             switch (choice) {
+    //                 case 1 -> addKhachHang();
+    //                 case 2 -> suaKhachHang();
+    //                 case 3 -> deleteKhachHang();
+    //                 case 4 -> hienThiThongTin();
+    //                 case 0 -> {
+    //                     System.out.println("Tam biet!");
+    //                     return;
+    //                 }
+    //                 default -> System.out.println("Lua chon khong hop le.");
+    //             }
+    //         } catch (NumberFormatException e) {
+    //             System.out.println("Vui long nhap so.");
+    //         } catch (Exception e) {
+    //             System.out.println("Loi khong xac dinh.");
+    //             e.printStackTrace();
+    //         }
+    //     }
+    // }
 }
