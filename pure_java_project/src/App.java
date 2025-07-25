@@ -13,9 +13,14 @@ public class App{
             //CastingTest.testCT();
             //CakeCase.cake(1);
             //SwitchCake.switchCase();
-            testBook.TestTT(); 
-            TestLeaf.Test2();
-            TestStudents.test();
+            // testBook.TestTT(); 
+            // TestLeaf.Test2();
+            // TestStudents.test();
+            public static void main(String[] args) {
+                OuterClassTest oct= new OuterClassTest();
+                OuterClassTest.InnerClassTest ict = oct.new InnerClassTest();
+                System.out.println(ict);
+            }
         }
 }
 
