@@ -14,11 +14,14 @@ public class ShoeController {
 
     @GetMapping("/shoelist")
     public String showShoeList(Model model) {
+        // Lấy danh sách giày từ "database" (lớp giả lập)
         ShoeDatabase shoeDB = new ShoeDatabase();
         List<Shoe> shoeList = shoeDB.getAllShoes();
 
+        // Đưa danh sách giày sang view
         model.addAttribute("shoes", shoeList);
 
+        // Trả về template shoelist.html
         return "shoelist";
     }
 }
