@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Thêm Khách Hàng</title>
+</head>
+<body>
+<h1>Thêm Khách Hàng</h1>
+<form th:action="@{/khachhang/add}" method="post">
+    <label>Mã KH: <input type="text" name="maKH" required></label><br>
+    <label>Tên KH: <input type="text" name="tenKH" required></label><br>
+    <label>Số Điện Thoại: <input type="text" name="soDienThoai" required></label><br>
+    <button type="submit">Thêm</button>
+</form>
+<a th:href="@{/khachhang}">Quay lại danh sách</a>
+</body>
+</html>
