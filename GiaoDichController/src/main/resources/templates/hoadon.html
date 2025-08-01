@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Hóa đơn</title>
+</head>
+<body>
+<h2>HÓA ĐƠN BÁN HÀNG</h2>
+<p>Thông tin khách hàng:</p>
+<ul>
+    <li>Tên: <span th:text="${giaodich.khachHang.tenKH}"></span></li>
+    <li>Địa chỉ: <span th:text="${giaodich.khachHang.diaChi}"></span></li>
+    <li>SĐT: <span th:text="${giaodich.khachHang.soDT}"></span></li>
+</ul>
+
+<p>Thông tin sản phẩm:</p>
+<ul>
+    <li>Tên SP: <span th:text="${giaodich.sanPham.tenSP}"></span></li>
+    <li>Giá bán: <span th:text="${giaodich.sanPham.giaBan}"></span></li>
+    <li>Size: <span th:text="${giaodich.sanPham.size}"></span></li>
+    <li>Số lượng: <span th:text="${giaodich.soLuongMua}"></span></li>
+</ul>
+
+<h3>Tổng tiền: <span th:text="${giaodich.tinhTongTien()}"></span> VNĐ</h3>
+</body>
+</html>
