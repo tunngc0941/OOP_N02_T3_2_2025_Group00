@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "fileReader",
+            "request": "launch",
+            "mainClass": "fileReader",
+            "projectName": ""
+        },
+        {
+            "type": "java",
             "name": "App",
             "request": "launch",
             "mainClass": "src.App",
