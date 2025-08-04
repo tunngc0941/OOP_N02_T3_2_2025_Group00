@@ -14,10 +14,19 @@ import java.util.List;
 public class KhachHangController {
     private final List<KhachHang> khachHangList = new ArrayList<>();
 
+
     @GetMapping("/khachhang")
     public String listKhachHang(Model model) {
+
+        KhachHang khachHang1 = new KhachHang("KH001", "Nguyen Van A", "0123456789");
+        KhachHang khachHang2 = new KhachHang("KH002", "Tran Thi B", "0987654321");
+        khachHangList.add(khachHang1);
+        khachHangList.add(khachHang2);
+
+
+        System.out.println("Danh sách khách hàng: " + khachHangList.get(0).getTenKH());
         model.addAttribute("khachHangList", khachHangList);
-        return "khachhang";
+        return "test";
     }
 
     @GetMapping("/khachhang/add")
