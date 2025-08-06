@@ -28,9 +28,9 @@ public class SanPhamController {
     @PostMapping("/sanpham/add")
     public String addSanPham(@RequestParam String ID,
                              @RequestParam String tenSP,
-                             @RequestParam int size,
-                             @RequestParam double giaBan) {
-        sanPhamList.add(new SanPham(ID, tenSP, size, giaBan));
+                             @RequestParam double giaBan,
+                             @RequestParam int size) {
+        sanPhamList.add(new SanPham(ID, tenSP, giaBan, size));
         return "redirect:/sanpham";
     }
 }

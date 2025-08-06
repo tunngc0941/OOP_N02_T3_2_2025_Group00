@@ -16,6 +16,14 @@ public class GiaoDichController {
 
     @PostMapping("/submit")
     public String submitForm(@ModelAttribute GiaoDichForm form, Model model) {
+        // Kiểm tra dữ liệu đầu vào
+        if (form.getTenKH() == null || form.getTenKH().isEmpty() ||
+            form.getTenSP() == null || form.getTenSP().isEmpty() ||
+            form.getSoLuong() <= 0) {
+            model.addAttribute("error", "Vui lòng nhập đầy đủ thông tin và số lượng hợp lệ.");
+            return "form";
+        }
+
         KhachHang kh = new KhachHang(form.getTenKH(), form.getDiaChi(), form.getSoDT());
         SanPham sp = new SanPham(form.getTenSP(), form.getTenSP(), form.getGiaBan(), form.getSize());
         GiaoDich gd = new GiaoDich(kh, sp, form.getSoLuong());
