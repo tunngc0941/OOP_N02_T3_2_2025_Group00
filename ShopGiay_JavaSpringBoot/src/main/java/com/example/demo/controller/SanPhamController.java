@@ -26,12 +26,11 @@ public class SanPhamController {
     }
 
     @PostMapping("/sanpham/add")
-    public String addSanPham(@RequestParam String maSP,
+    public String addSanPham(@RequestParam String ID,
                              @RequestParam String tenSP,
                              @RequestParam int size,
-                             @RequestParam double giaBan,
-                             @RequestParam int soLuong) {
-        sanPhamList.add(new SanPham(maSP, tenSP, size, giaBan, soLuong));
+                             @RequestParam double giaBan) {
+        sanPhamList.add(new SanPham(ID, tenSP, size, giaBan));
         return "redirect:/sanpham";
     }
 }
