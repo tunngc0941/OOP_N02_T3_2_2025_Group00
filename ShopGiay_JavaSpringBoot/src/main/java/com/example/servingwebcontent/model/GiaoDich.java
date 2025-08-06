@@ -14,7 +14,7 @@ public class GiaoDich {
     }
 
     public GiaoDich(KhachHang khachHang2, SanPham sanPham2, int i) {
-        //TODO Auto-generated constructor stub
+        
     }
 
     public KhachHang getKhachHang() {
