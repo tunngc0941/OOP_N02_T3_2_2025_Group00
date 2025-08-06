@@ -26,7 +26,7 @@ public class CuaHangGiayController {
         ));
     }
 
-    @GetMapping("/giay")
+    @GetMapping("/")
     public String giay(Model model) {
         model.addAttribute("products", quanLySanPham.getDanhSach());
         model.addAttribute("customers", quanLyKhachHang.getDanhSach());
