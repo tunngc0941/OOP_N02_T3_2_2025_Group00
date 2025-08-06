@@ -5,14 +5,16 @@ public class KhachHang {
     private String tenKH;
     private String soDienThoai;
 
+    public KhachHang() {}
+
     public KhachHang(String maKH, String tenKH, String soDienThoai) {
         this.maKH = maKH;
         this.tenKH = tenKH;
         this.soDienThoai = soDienThoai;
     }
 
-    public void setMaKH(String maKH) {
-        this.maKH = maKH;
+    public String getMaKH() {
+        return maKH;
     }
 
     public void setTenKH(String tenKH) {
@@ -23,21 +25,7 @@ public class KhachHang {
         this.soDienThoai = soDienThoai;
     }
 
-    public String getMaKH() {
-        return maKH;
-    }
-
-    public String getTenKH() {
-        return tenKH;
-    }
-
-    public String getSoDienThoai() {
-        return soDienThoai;
-    }
-
-    public void hienThiThongTin() {
-        System.out.println("Mã KH: " + maKH);
-        System.out.println("Tên KH: " + tenKH);
-        System.out.println("Số điện thoại: " + soDienThoai);
+    public void hienThi() {
+        System.out.println("Khách hàng: " + tenKH + " - SĐT: " + soDienThoai);
     }
 }

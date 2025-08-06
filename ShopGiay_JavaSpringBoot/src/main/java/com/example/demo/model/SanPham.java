@@ -1,55 +1,47 @@
 package com.example.demo.model;
 
 public class SanPham {
-    private String ID;
-    private String tenSp;
+    private String maSP;
+    private String tenSP;
+    private String size;
     private double giaBan;
-    private int size;
+    private int soLuong;
 
-    public SanPham(String ID, String tenSp, double giaBan, int size) {
-        this.ID = ID;
-        this.tenSp = tenSp;
-        this.giaBan = giaBan;
+    public SanPham() {}
+
+    public SanPham(String maSP, String tenSP, String size, double giaBan, int soLuong) {
+        this.maSP = maSP;
+        this.tenSP = tenSP;
         this.size = size;
+        this.giaBan = giaBan;
+        this.soLuong = soLuong;
     }
 
-    public void setID(String ID) {
-        this.ID = ID;
+    public String getMaSP() {
+        return maSP;
     }
 
-    public void setTenSp(String tenSp) {
-        this.tenSp = tenSp;
+    public void setMaSP(String maSP) {
+        this.maSP = maSP;
+    }
+
+    public void setTenSP(String tenSP) {
+        this.tenSP = tenSP;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
     }
 
     public void setGiaBan(double giaBan) {
         this.giaBan = giaBan;
     }
 
-    public void setSize(int size) {
-        this.size = size;
+    public void setSoLuong(int soLuong) {
+        this.soLuong = soLuong;
     }
 
-    public String getID() {
-        return ID;
-    }
-
-    public String getTenSp() {
-        return tenSp;
-    }
-
-    public double getGiaBan() {
-        return giaBan;
-    }
-
-    public int getSize() {
-        return size;
-    }
-
-    public void hienThiThongTin() {
-        System.out.println("Thông tin sản phẩm:");
-        System.out.println("Mã sản phẩm: " + ID);
-        System.out.println("Tên sản phẩm: " + tenSp);
-        System.out.println("Giá bán: " + giaBan);
-        System.out.println("Size: " + size);
+    public void hienThi() {
+        System.out.println("Sản phẩm: " + tenSP + " - Giá: " + giaBan + " - SL: " + soLuong);
     }
 }
