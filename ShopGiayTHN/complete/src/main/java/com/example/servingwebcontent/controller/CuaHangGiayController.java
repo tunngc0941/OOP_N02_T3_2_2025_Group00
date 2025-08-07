@@ -18,7 +18,7 @@ public class CuaHangGiayController {
     static {
         quanLySanPham.them(new SanPham("Giày Adidas", 1500000));
         quanLySanPham.them(new SanPham("Giày Nike", 2000000));
-        quanLyKhachHang.them(new KhachHang("Nguyễn Văn A", "0909123456"));
+        quanLyKhachHang.them(new KhachHang( "Nguyễn Văn A", "0909123456"));
         quanLyGiaoDich.them(new GiaoDich(
              quanLyKhachHang.getDanhSach().get(0),
             quanLySanPham.getDanhSach().get(0),
