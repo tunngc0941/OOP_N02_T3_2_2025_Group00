@@ -1,4 +1,4 @@
-package com.example.servingwebcontent.database;
+package com.example.servingwebcontent.Database;
 
 import org.springframework.stereotype.Component;
 
