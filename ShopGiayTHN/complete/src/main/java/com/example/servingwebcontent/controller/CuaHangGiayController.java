@@ -32,6 +32,6 @@ public class CuaHangGiayController {
         model.addAttribute("products", quanLySanPham.getDanhSach());
         model.addAttribute("customers", quanLyKhachHang.getDanhSach());
         model.addAttribute("transactions", quanLyGiaoDich.getDanhSach());
-        return "giay";
+        return "test";
     }
 }
