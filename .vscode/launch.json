@@ -9,6 +9,13 @@
             "name": "ServingWebContentApplication",
             "request": "launch",
             "mainClass": "com.example.servingwebcontent.ServingWebContentApplication",
+            "projectName": "serving-web-content-complete"
+        },
+        {
+            "type": "java",
+            "name": "ServingWebContentApplication",
+            "request": "launch",
+            "mainClass": "com.example.servingwebcontent.ServingWebContentApplication",
             "projectName": "demo"
         },
         {
