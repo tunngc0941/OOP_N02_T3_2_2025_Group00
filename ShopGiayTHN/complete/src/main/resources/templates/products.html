@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>THN Shoes - Sản phẩm</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet"/>
+  <style>
+    body{background:#f0f4f8;font-family:Poppins,system-ui;}
+    .navbar{background:#001f3f;}
+    .navbar .nav-link,.navbar-brand{color:#fff!important}
+    .card{border-radius:.75rem}
+    .card-img-top{height:180px;object-fit:cover}
+    .product-price{color:#003366;font-weight:700}
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand" href="/index.html">THN Shoes</a>
+    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav"><span class="navbar-toggler-icon"><i class="bi bi-list" style="color:#fff"></i></span></button>
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="/products.html">Sản phẩm</a></li>
+        <li class="nav-item"><a class="nav-link" href="/customers.html">Khách hàng</a></li>
+        <li class="nav-item"><a class="nav-link" href="/transactions.html">Giao dịch</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container my-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h3>Sản phẩm</h3>
+    <div>
+      <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#productModal" onclick="openCreateProduct()"><i class="bi bi-plus-lg"></i> Thêm sản phẩm</button>
+    </div>
+  </div>
+
+  <!-- Slider (center) -->
+  <div id="productCarousel" class="carousel slide mb-4" data-bs-ride="carousel">
+    <div class="carousel-inner" id="carousel-items">
+      <!-- rendered by JS -->
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
+    <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
+  </div>
+
+  <!-- Product grid -->
+  <div class="row" id="product-grid">
+    <!-- JS will insert cards -->
+  </div>
+</div>
+
+<!-- Product Modal (create/edit) -->
+<div class="modal fade" id="productModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <form class="modal-content" id="productForm" onsubmit="submitProduct(event)">
+      <div class="modal-header">
+        <h5 class="modal-title" id="productModalTitle">Thêm sản phẩm</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="productId">
+        <div class="mb-2">
+          <label class="form-label">Tên</label>
+          <input id="productName" class="form-control" required>
+        </div>
+        <div class="mb-2">
+          <label class="form-label">Mô tả</label>
+          <textarea id="productDesc" class="form-control" rows="2"></textarea>
+        </div>
+        <div class="mb-2">
+          <label class="form-label">Giá (VND)</label>
+          <input id="productPrice" type="number" class="form-control" required min="0">
+        </div>
+        <div class="mb-2">
+          <label class="form-label">Ảnh (URL)</label>
+          <input id="productImage" class="form-control">
+        </div>
+        <div class="mb-2">
+          <label class="form-label">Size (ví dụ: 38,39,...)</label>
+          <input id="productSize" class="form-control">
+        </div>
+        <div class="mb-2">
+          <label class="form-label">Stock</label>
+          <input id="productStock" type="number" class="form-control" min="0" value="0">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Huỷ</button>
+        <button type="submit" class="btn btn-primary">Lưu</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+const api = '/api/products';
+
+async function loadProducts(){
+  const res = await fetch(api);
+  const products = await res.json();
+  renderCarousel(products);
+  renderGrid(products);
+}
+
+function renderCarousel(products){
+  const c = document.getElementById('carousel-items');
+  c.innerHTML = products.map((p,i)=>`
+    <div class="carousel-item ${i===0?'active':''}">
+      <div class="d-flex justify-content-center">
+        <div class="card" style="width:28rem;">
+          <img src="${p.image||'https://via.placeholder.com/800x350'}" class="card-img-top" alt="">
+          <div class="card-body text-center">
+            <h5 class="card-title">${p.name}</h5>
+            <p class="card-text text-truncate">${p.description||''}</p>
+            <div class="product-price">${(p.price||0).toLocaleString()}₫</div>
+          </div>
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+function renderGrid(products){
+  const grid = document.getElementById('product-grid');
+  grid.innerHTML = products.map(p=>`
+    <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        <img src="${p.image||'https://via.placeholder.com/400x200'}" class="card-img-top" alt="">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">${p.name}</h5>
+          <p class="card-text text-muted flex-grow-1">${p.description||''}</p>
+          <p class="mb-1 product-price">${(p.price||0).toLocaleString()}₫</p>
+          <div class="d-flex justify-content-between">
+            <button class="btn btn-sm btn-primary" onclick="openEditProduct(${p.id})"><i class="bi bi-pencil"></i> Sửa</button>
+            <button class="btn btn-sm btn-danger" onclick="deleteProduct(${p.id})"><i class="bi bi-trash"></i> Xoá</button>
+            <button class="btn btn-sm btn-outline-dark" onclick="addToCart(${p.id})"><i class="bi bi-cart-plus"></i> Thêm</button>
+          </div>
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+function openCreateProduct(){
+  document.getElementById('productModalTitle').innerText='Thêm sản phẩm';
+  ['productId','productName','productDesc','productPrice','productImage','productSize','productStock'].forEach(id=>document.getElementById(id).value='');
+}
+async function openEditProduct(id){
+  const r = await fetch(api + '/' + id);
+  const p = await r.json();
+  document.getElementById('productModalTitle').innerText='Sửa sản phẩm';
+  document.getElementById('productId').value = p.id;
+  document.getElementById('productName').value = p.name;
+  document.getElementById('productDesc').value = p.description;
+  document.getElementById('productPrice').value = p.price;
+  document.getElementById('productImage').value = p.image;
+  document.getElementById('productSize').value = p.size || '';
+  document.getElementById('productStock').value = p.stock || 0;
+  new bootstrap.Modal(document.getElementById('productModal')).show();
+}
+
+async function submitProduct(e){
+  e.preventDefault();
+  const id = document.getElementById('productId').value;
+  const payload = {
+    name: document.getElementById('productName').value,
+    description: document.getElementById('productDesc').value,
+    price: Number(document.getElementById('productPrice').value),
+    image: document.getElementById('productImage').value,
+    size: document.getElementById('productSize').value,
+    stock: Number(document.getElementById('productStock').value)
+  };
+  const method = id ? 'PUT' : 'POST';
+  const url = id ? api + '/' + id : api;
+  const res = await fetch(url, {
+    method,
+    headers:{'Content-Type':'application/json'},
+    body: JSON.stringify(payload)
+  });
+  if(res.ok){
+    bootstrap.Modal.getInstance(document.getElementById('productModal')).hide();
+    loadProducts();
+  } else {
+    alert('Lỗi lưu sản phẩm');
+  }
+}
+
+async function deleteProduct(id){
+  if(!confirm('Bạn có chắc muốn xoá?')) return;
+  const res = await fetch(api + '/' + id, { method:'DELETE' });
+  if(res.ok) loadProducts(); else alert('Xoá thất bại');
+}
+
+function addToCart(id){
+  alert('Demo: thêm sản phẩm ' + id + ' vào giỏ (chưa implement backend giỏ hàng)');
+}
+
+document.addEventListener('DOMContentLoaded', loadProducts);
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
