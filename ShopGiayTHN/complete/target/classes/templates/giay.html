@@ -1,139 +1,480 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="vi">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>THN Shoes - Quản lý sản phẩm</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
-  <style>
-    body {
-      background-color: #f9f9f9;
-      font-family: 'Poppins', sans-serif;
-    }
-    .navbar-custom {
-      background-color: #212529;
-    }
-    .navbar-custom .navbar-brand, .navbar-custom .nav-link {
-      color: #fff;
-    }
-    .navbar-custom .nav-link.active {
-      font-weight: bold;
-      text-decoration: underline;
-    }
-    .carousel-item img {
-      height: 400px;
-      object-fit: cover;
-      border-radius: 1rem;
-    }
-    .card {
-      border-radius: 0.75rem;
-      box-shadow: 0 0.2rem 0.5rem rgba(0,0,0,0.05);
-    }
-    .card-img-top {
-      height: 200px;
-      object-fit: cover;
-    }
-    .btn-action {
-      margin-right: 5px;
-    }
-  </style>
-</head>
-<body>
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
-    <div class="container">
-      <a class="navbar-brand" href="#">THN Shoes</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navMain">
-        <ul class="navbar-nav me-auto">
-          <li class="nav-item"><a class="nav-link active" href="#">Trang chủ</a></li>
-          <li class="nav-item"><a class="nav-link" href="/products">Sản phẩm</a></li>
-          <li class="nav-item"><a class="nav-link" href="/products/create">Thêm sản phẩm</a></li>
-          <li class="nav-item"><a class="nav-link" href="/orders">Đơn hàng</a></li>
-        </ul>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>THN - Shop Giày Cao Cấp</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary-color: #16213e;
+        --secondary-color: #e94560;
+        --accent-color: #0f3460;
+        --light-color: #f8f9fa;
+        --dark-color: #1a1a2e;
+      }
+      body {
+        background: #ffffff;
+        font-family: 'Montserrat', system-ui, -apple-system, BlinkMacSystemFont,
+          sans-serif;
+        color: #333;
+        line-height: 1.6;
+      }
+      /* Navbar */
+      .navbar-custom {
+        background-color: var(--dark-color);
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        padding: 15px 0;
+      }
+      .navbar-brand {
+        font-weight: 700;
+        font-size: 1.5rem;
+        letter-spacing: 1px;
+      }
+      .navbar-custom .nav-link {
+        color: var(--light-color);
+        font-weight: 500;
+        padding: 8px 15px;
+        margin: 0 5px;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+      }
+      .navbar-custom .nav-link:hover,
+      .navbar-custom .nav-link.active {
+        color: var(--secondary-color);
+        background: rgba(233, 69, 96, 0.1);
+      }
+      .nav-icons .nav-link {
+        font-size: 1.2rem;
+        padding: 5px 10px;
+      }
+      /* Section Styling */
+      .section-title {
+        position: relative;
+        margin-bottom: 30px;
+        text-align: center;
+      }
+      .section-title h2 {
+        font-weight: 700;
+        color: var(--primary-color);
+      }
+      .section-title p {
+        color: #6c757d;
+        font-size: 1.1rem;
+      }
+      .section-title:after {
+        content: '';
+        display: block;
+        width: 80px;
+        height: 4px;
+        background: var(--secondary-color);
+        margin: 15px auto 0;
+        border-radius: 2px;
+      }
+      /* Product Cards */
+      .card-product {
+        border: none;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+        margin-bottom: 20px;
+      }
+      .card-product:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      }
+      .product-img {
+        height: 250px;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+      .card-product:hover .product-img {
+        transform: scale(1.05);
+      }
+      .card-body {
+        padding: 20px;
+      }
+      .card-title {
+        font-weight: 600;
+        margin-bottom: 10px;
+        color: var(--dark-color);
+      }
+      .card-text {
+        color: #6c757d;
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+      }
+      .price {
+        color: var(--secondary-color);
+        font-weight: 700;
+        font-size: 1.2rem;
+      }
+      .btn-buy {
+        background: var(--primary-color);
+        color: white;
+        border: none;
+        padding: 8px 20px;
+        border-radius: 30px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+      }
+      .btn-buy:hover {
+        background: var(--accent-color);
+        transform: translateY(-2px);
+      }
+      .badge-new {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: var(--secondary-color);
+        color: white;
+        padding: 5px 10px;
+        border-radius: 30px;
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+      /* Testimonials */
+      .testimonial-card {
+        background: white;
+        border-radius: 10px;
+        padding: 25px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        height: 100%;
+        transition: all 0.3s ease;
+      }
+      .testimonial-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      }
+      .testimonial-img {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid var(--secondary-color);
+      }
+      .rating {
+        color: #ffc107;
+        font-size: 1rem;
+      }
+      /* Vouchers */
+      .voucher-card {
+        background: white;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        border-left: 5px solid var(--secondary-color);
+        transition: all 0.3s ease;
+        margin-bottom: 20px;
+      }
+
+      .review-card {
+        background: white;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        border-left: 5px solid var(--secondary-color);
+        transition: all 0.3s ease;
+      }
+      .review-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      }
+
+      .voucher-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      }
+      .voucher-code {
+        background: var(--light-color);
+        padding: 8px 15px;
+        border-radius: 30px;
+        font-family: monospace;
+        font-weight: 600;
+      }
+      /* Footer */
+      footer {
+        background: var(--dark-color);
+        color: white;
+        padding: 60px 0 20px;
+      }
+      .footer-title {
+        font-weight: 700;
+        margin-bottom: 20px;
+        font-size: 1.3rem;
+      }
+      .footer-links a {
+        color: #adb5bd;
+        display: block;
+        margin-bottom: 10px;
+        transition: all 0.3s ease;
+        text-decoration: none;
+      }
+      .footer-links a:hover {
+        color: var(--secondary-color);
+        padding-left: 5px;
+      }
+      .social-icons a {
+        color: white;
+        font-size: 1.5rem;
+        margin-right: 15px;
+        transition: all 0.3s ease;
+      }
+      .social-icons a:hover {
+        color: var(--secondary-color);
+        transform: translateY(-3px);
+      }
+      .copyright {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 20px;
+        margin-top: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">THN SHOES</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html">Trang chủ</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="sanpham.html">Sản phẩm</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="khachhang.html">Khách hàng</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="giaodich.html">Giao dịch</a>
+            </li>
+          </ul>
+          <div class="nav-icons d-flex ms-lg-3">
+            <a href="#" class="nav-link me-2 me-lg-3"
+              ><i class="bi bi-heart"></i
+            ></a>
+            <a href="#" class="nav-link me-2 me-lg-3"
+              ><i class="bi bi-cart3"></i
+            ></a>
+            <a href="#" class="nav-link"><i class="bi bi-person"></i></a>
+          </div>
+        </div>
       </div>
-    </div>
-  </nav>
+    </nav>
 
-  <!-- Slider -->
-  <div class="container mt-4">
-    <div id="slider" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img src="https://images.unsplash.com/photo-1606813901424-8f11709c11ea" class="d-block w-100" alt="slider-1">
+    <!-- Featured Products -->
+    <section class="py-5">
+      <div class="container">
+        <div class="section-title">
+          <h2>Sản phẩm nổi bật</h2>
+          <p>Những mẫu giày mới nhất từ THN</p>
         </div>
-        <div class="carousel-item">
-          <img src="https://images.unsplash.com/photo-1600185365005-c9fbd2f9030c" class="d-block w-100" alt="slider-2">
-        </div>
-        <div class="carousel-item">
-          <img src="https://images.unsplash.com/photo-1581425152421-3d00e6c9e53b" class="d-block w-100" alt="slider-3">
+        <div class="row g-4" id="featured-items"></div>
+        <div class="text-center mt-5">
+          <a href="sanpham.html" class="btn btn-outline-primary btn-lg"
+            >Xem tất cả sản phẩm</a
+          >
         </div>
       </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#slider" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon"></span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#slider" data-bs-slide="next">
-        <span class="carousel-control-next-icon"></span>
-      </button>
-    </div>
-  </div>
+    </section>
 
-  <!-- Danh sách sản phẩm -->
-  <div class="container mt-5">
-    <h3 class="mb-4 text-center">Danh sách sản phẩm</h3>
-    <div class="row" id="product-list">
-      <!-- Sản phẩm sẽ được render ở đây -->
-    </div>
-  </div>
+    <!-- Testimonials + Vouchers -->
+    <section class="py-5 bg-light">
+      <div class="container">
+        <div class="row g-4">
+          <!-- Left: Testimonials -->
+          <div class="col-lg-8">
+            <div class="section-title">
+              <h2>Khách hàng nói gì về THN Shoes</h2>
+              <p>Những đánh giá chân thực từ khách hàng của chúng tôi</p>
+            </div>
+            <div class="review-card mb-3">
+              <div class="d-flex align-items-center mb-2">
+                <img
+                  src="images/kh1.jpg"
+                  alt="Nguyễn Văn A"
+                  class="testimonial-img me-3"
+                />
+                <div>
+                  <h6 class="mb-0">Nguyễn Văn A</h6>
+                  <div class="rating">★★★★★</div>
+                </div>
+              </div>
+              <p>
+                Giày rất đẹp và chất lượng, đi êm chân. Giao hàng nhanh và đóng
+                gói cẩn thận.
+              </p>
+            </div>
+            <div class="review-card mb-3">
+              <div class="d-flex align-items-center mb-2">
+                <img
+                  src="images/kh2.jpg"
+                  alt="Trần Thị B"
+                  class="testimonial-img me-3"
+                />
+                <div>
+                  <h6 class="mb-0">Trần Thị B</h6>
+                  <div class="rating">★★★★☆</div>
+                </div>
+              </div>
+              <p>Mẫu mã đa dạng, phong cách. Sẽ ủng hộ shop dài dài.</p>
+            </div>
+            <div class="text-center mt-4">
+              <button class="btn btn-outline-primary">
+                <i class="bi bi-chat-square-text me-2"></i>Xem tất cả nhận xét
+              </button>
+            </div>
+          </div>
 
-  <!-- Script -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    async function loadProducts() {
-      try {
-        const res = await fetch('/api/products?ts=' + Date.now());
-        const products = await res.json();
-        const list = document.getElementById('product-list');
-        list.innerHTML = products.map(p => `
-          <div class="col-md-4 mb-4">
-            <div class="card">
-              <img src="${p.image || 'https://via.placeholder.com/400x200'}" class="card-img-top" alt="${p.name}">
-              <div class="card-body">
-                <h5 class="card-title">${p.name}</h5>
-                <p class="card-text"><strong>Giá:</strong> ${p.price.toLocaleString()}₫</p>
-                <p class="card-text"><strong>Size:</strong> ${p.size}</p>
-                <div class="d-flex justify-content-between">
-                  <a href="/products/edit/${p.id}" class="btn btn-sm btn-primary btn-action"><i class="bi bi-pencil"></i> Sửa</a>
-                  <button class="btn btn-sm btn-danger btn-action" onclick="deleteProduct(${p.id})"><i class="bi bi-trash"></i> Xoá</button>
+          <!-- Right: Vouchers -->
+          <div class="col-lg-4">
+            <div class="section-title">
+              <h2>Ưu đãi đặc biệt</h2>
+              <p>Các chương trình khuyến mãi hiện có</p>
+            </div>
+            <div class="voucher-card">
+              <h5>Giảm 20% cho đơn hàng đầu tiên</h5>
+              <p>Nhập mã khi thanh toán để được giảm giá.</p>
+              <div class="voucher-code">WELCOME20</div>
+            </div>
+            <div class="voucher-card">
+              <h5>Mua 2 tặng 1</h5>
+              <p>Áp dụng cho các mẫu sneaker mới.</p>
+              <div class="voucher-code">BUY2GET1</div>
+            </div>
+            <div class="voucher-card">
+              <h5>Freeship toàn quốc</h5>
+              <p>Cho đơn hàng từ 1.000.000₫ trở lên.</p>
+              <div class="voucher-code">FREESHIP</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 mb-4">
+            <h5 class="footer-title">THN SHOES</h5>
+            <p>
+              Chuyên cung cấp các sản phẩm giày dép chất lượng cao với giá cả
+              hợp lý. Cam kết mang đến trải nghiệm mua sắm tốt nhất cho khách
+              hàng.
+            </p>
+            <div class="social-icons mt-3">
+              <a href="#"><i class="bi bi-facebook"></i></a>
+              <a href="#"><i class="bi bi-instagram"></i></a>
+              <a href="#"><i class="bi bi-twitter"></i></a>
+              <a href="#"><i class="bi bi-youtube"></i></a>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-6 mb-4">
+            <h5 class="footer-title">Danh mục</h5>
+            <div class="footer-links">
+              <a href="#">Giày nam</a>
+              <a href="#">Giày nữ</a>
+              <a href="#">Giày thể thao</a>
+              <a href="#">Giày công sở</a>
+              <a href="#">Phụ kiện</a>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 mb-4">
+            <h5 class="footer-title">Thông tin</h5>
+            <div class="footer-links">
+              <a href="#">Về chúng tôi</a>
+              <a href="#">Chính sách bảo mật</a>
+              <a href="#">Điều khoản dịch vụ</a>
+              <a href="#">Chính sách đổi trả</a>
+              <a href="#">Hướng dẫn mua hàng</a>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 mb-4">
+            <h5 class="footer-title">Liên hệ</h5>
+            <p>
+              <i class="bi bi-geo-alt me-2"></i> 123 Đường ABC, Quận 1, TP.HCM
+            </p>
+            <p><i class="bi bi-telephone me-2"></i> 0901.234.567</p>
+            <p><i class="bi bi-envelope me-2"></i> info@thnshoes.com</p>
+            <p>
+              <i class="bi bi-clock me-2"></i> Mở cửa: 8:00 - 21:00 hàng ngày
+            </p>
+          </div>
+        </div>
+        <div class="copyright text-center">
+          <p class="mb-0">© 2023 THN SHOES. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const products = [
+        {
+          id: 1,
+          name: 'Giày Sneaker THN-01',
+          description: 'Thiết kế trẻ trung...',
+          price: '1.299.000',
+          image: '...',
+          isNew: true,
+        },
+        {
+          id: 2,
+          name: 'Giày Thể Thao THN-Runner',
+          description: 'Công nghệ đế đệm khí...',
+          price: '1.599.000',
+          image: '...',
+          isNew: false,
+        },
+      ];
+      const featuredContainer = document.getElementById('featured-items');
+      products.forEach((product) => {
+        featuredContainer.innerHTML += `
+          <div class="col-md-6 col-lg-4">
+            <div class="card card-product h-100">
+              <div class="position-relative overflow-hidden">
+                <img src="${product.image}" class="product-img w-100" alt="${
+          product.name
+        }">
+                ${product.isNew ? '<span class="badge-new">Mới</span>' : ''}
+              </div>
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title">${product.name}</h5>
+                <p class="card-text">${product.description}</p>
+                <div class="mt-auto d-flex justify-content-between align-items-center">
+                  <div class="price">${product.price}₫</div>
+                  <button class="btn btn-buy">Mua ngay <i class="bi bi-cart-plus ms-1"></i></button>
                 </div>
               </div>
             </div>
           </div>
-        `).join('');
-      } catch (err) {
-        console.error('Lỗi tải sản phẩm:', err);
-      }
-    }
-
-    async function deleteProduct(id) {
-      if (!confirm('Bạn có chắc muốn xoá sản phẩm này?')) return;
-      try {
-        const res = await fetch('/api/products/' + id, { method: 'DELETE' });
-        if (res.ok) {
-          alert('Đã xoá thành công!');
-          loadProducts();
-        } else {
-          alert('Xoá thất bại!');
-        }
-      } catch (err) {
-        console.error('Lỗi xoá:', err);
-      }
-    }
-
-    document.addEventListener('DOMContentLoaded', loadProducts);
-  </script>
-</body>
+        `;
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
 </html>
