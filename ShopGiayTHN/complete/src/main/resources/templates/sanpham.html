@@ -1,67 +1,42 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Quản lý sản phẩm - THN Shoes</title>
+  <meta name="description" content="Quản lý shop Giày THN - Quản lý sản phẩm, đơn hàng và khuyến mãi" />
+  <title>Quản lý - Shop Giày THN</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
   <style>
-    :root {
-      --primary-color: #16213e;
-      --secondary-color: #e94560;
-      --accent-color: #0f3460;
-      --dark-color: #1a1a2e;
-    }
-    body {
-      background: #f8f9fa;
-      font-family: 'Montserrat', sans-serif;
-    }
-    /* Navbar */
-    .navbar-custom {
-      background-color: var(--dark-color);
-    }
-    .navbar-custom .nav-link {
-      color: #fff;
-    }
-    .navbar-custom .nav-link.active {
-      color: var(--secondary-color);
-      font-weight: bold;
-    }
-    /* Card */
-    .card {
-      border-radius: 1rem;
-      background: #fff;
-      border: 1px solid #e2e2e2;
-    }
-    .btn-action {
-      background: var(--primary-color);
-      color: #fff;
-      border: none;
-    }
-    .btn-action:hover {
-      background: var(--accent-color);
-    }
-    .table-hover tbody tr:hover {
-      background-color: #f1f3f5;
-    }
+    body { background: #f2ede7; font-family: system-ui, sans-serif; }
+    .navbar-custom { background-color: #4a3e2b; }
+    .navbar-custom .nav-link, .navbar-custom .navbar-brand { color: #f5e9de; }
+    .navbar-custom .nav-link.active { font-weight: bold; text-decoration: underline; }
+    .card { border-radius: 1rem; background: #fffaf5; border: 1px solid #e2d8cf; }
+    .btn-action { background: #6a4b2d; color: #fff; border: none; }
+    .btn-action:hover { background: #533f23; color: #fff; }
+    .table-hover tbody tr:hover { background-color: #f9f3ec; }
   </style>
 </head>
 <body>
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+  <nav class="navbar navbar-expand-lg navbar-custom">
     <div class="container">
-      <a class="navbar-brand text-white" href="index.html">THN SHOES</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"><i class="bi bi-list" style="color:white;"></i></span>
+      <a class="navbar-brand" href="index.html">Shop Giày THN</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
+        <span class="navbar-toggler-icon"><i class="bi bi-list" style="font-size:1.25rem; color:#f5e9de;"></i></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+      <div class="collapse navbar-collapse" id="navMain">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item"><a class="nav-link" href="index.html">Trang chủ</a></li>
-          <li class="nav-item"><a class="nav-link active" href="sanpham.html">Sản phẩm</a></li>
-          <li class="nav-item"><a class="nav-link" href="khachhang.html">Khách hàng</a></li>
-          <li class="nav-item"><a class="nav-link" href="giaodich.html">Giao dịch</a></li>
+          <li class="nav-item"><a class="nav-link" href="sanpham.html">Sản phẩm</a></li>
+          <li class="nav-item"><a class="nav-link" href="khachhang.html">Tìm đơn</a></li>
+          <li class="nav-item"><a class="nav-link active" href="giaodich.html">Quản lý</a></li>
         </ul>
+        <form class="d-flex" role="search" action="/search" method="GET">
+          <input class="form-control me-2" type="search" name="q" placeholder="Tìm giày..." />
+          <button class="btn btn-light btn-sm" type="submit"><i class="bi bi-search"></i></button>
+        </form>
       </div>
     </div>
   </nav>
@@ -70,7 +45,7 @@
   <div class="container mt-4">
     <div class="card shadow-sm mb-4">
       <div class="card-header d-flex justify-content-between align-items-center">
-        <strong>Quản lý sản phẩm giày</strong>
+        <strong>Quản lý Sản phẩm</strong>
         <button class="btn btn-sm btn-action" data-bs-toggle="modal" data-bs-target="#addItemModal">
           <i class="bi bi-plus-circle"></i> Thêm sản phẩm
         </button>
@@ -79,10 +54,9 @@
         <table class="table table-hover align-middle">
           <thead>
             <tr>
-              <th>Tên sản phẩm</th>
-              <th>Giá</th>
-              <th>Tồn kho</th>
-              <th>Mới</th>
+              <th>Tên giày</th>
+              <th>Giá (₫)</th>
+              <th>Số lượng</th>
               <th>Hành động</th>
             </tr>
           </thead>
@@ -103,7 +77,7 @@
         <div class="modal-body">
           <form id="addItemForm">
             <div class="mb-3">
-              <label class="form-label">Tên sản phẩm</label>
+              <label class="form-label">Tên giày</label>
               <input type="text" class="form-control" id="itemName" required />
             </div>
             <div class="mb-3">
@@ -111,15 +85,8 @@
               <input type="number" class="form-control" id="itemPrice" required />
             </div>
             <div class="mb-3">
-              <label class="form-label">Tồn kho</label>
+              <label class="form-label">Số lượng</label>
               <input type="number" class="form-control" id="itemStock" required min="0" />
-            </div>
-            <div class="mb-3">
-              <label class="form-label">Sản phẩm mới?</label>
-              <select class="form-select" id="itemNew">
-                <option value="true">Có</option>
-                <option value="false">Không</option>
-              </select>
             </div>
           </form>
         </div>
@@ -131,7 +98,7 @@
     </div>
   </div>
 
-  <!-- Modal chỉnh sửa sản phẩm -->
+  <!-- Modal chỉnh sửa -->
   <div class="modal fade" id="editItemModal" tabindex="-1">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -143,7 +110,7 @@
           <form id="editItemForm">
             <input type="hidden" id="editItemId" />
             <div class="mb-3">
-              <label class="form-label">Tên sản phẩm</label>
+              <label class="form-label">Tên giày</label>
               <input type="text" class="form-control" id="editItemName" required />
             </div>
             <div class="mb-3">
@@ -151,15 +118,8 @@
               <input type="number" class="form-control" id="editItemPrice" required />
             </div>
             <div class="mb-3">
-              <label class="form-label">Tồn kho</label>
+              <label class="form-label">Số lượng</label>
               <input type="number" class="form-control" id="editItemStock" required min="0" />
-            </div>
-            <div class="mb-3">
-              <label class="form-label">Sản phẩm mới?</label>
-              <select class="form-select" id="editItemNew">
-                <option value="true">Có</option>
-                <option value="false">Không</option>
-              </select>
             </div>
           </form>
         </div>
@@ -171,7 +131,7 @@
     </div>
   </div>
 
-  <!-- Toast -->
+  <!-- Toast thông báo -->
   <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1055">
     <div id="liveToast" class="toast align-items-center text-bg-success border-0" role="alert">
       <div class="d-flex">
@@ -183,6 +143,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
+    // Helpers
     function escapeHtml(unsafe) {
       if (unsafe == null) return '';
       return String(unsafe)
@@ -207,6 +168,7 @@
       toast.show();
     }
 
+    // Load products
     async function loadProducts() {
       try {
         const res = await fetch('/api/products?ts=' + Date.now(), { cache: 'no-store' });
@@ -219,15 +181,13 @@
           <tr data-id="${item.id}">
             <td>${escapeHtml(item.name)}</td>
             <td>${(item.price || 0).toLocaleString()}₫</td>
-            <td>${item.stock ?? 0}</td>
-            <td>${item.isNew ? '✅' : '❌'}</td>
+            <td>${(item.stock ?? 0)}</td>
             <td>
               <button class="btn-edit btn btn-sm btn-outline-primary me-1"
                 data-id="${item.id}"
                 data-name="${escapeHtml(item.name)}"
                 data-price="${item.price ?? 0}"
-                data-stock="${item.stock ?? 0}"
-                data-isnew="${item.isNew}">
+                data-stock="${item.stock ?? 0}">
                 <i class="bi bi-pencil"></i>
               </button>
               <button class="btn-delete btn btn-sm btn-outline-danger"
@@ -244,25 +204,41 @@
       }
     }
 
+    // Event delegation for edit/delete buttons
     productTableBody.addEventListener('click', (e) => {
       const btn = e.target.closest('button');
       if (!btn) return;
       if (btn.classList.contains('btn-delete')) {
-        removeItem(btn.dataset.id, btn.dataset.name);
+        const id = btn.dataset.id;
+        const name = btn.dataset.name;
+        removeProduct(id, name);
       } else if (btn.classList.contains('btn-edit')) {
-        openEdit(btn.dataset);
+        const id = btn.dataset.id;
+        const name = btn.dataset.name;
+        const price = btn.dataset.price;
+        const stock = btn.dataset.stock;
+        openEdit(id, name, price, stock);
       }
     });
 
-    async function removeItem(id, name) {
+    // Delete product
+    async function removeProduct(id, name) {
       if (!confirm(`Xóa sản phẩm "${name}"?`)) return;
       try {
         const res = await fetch(`/api/products/${id}`, { method: 'DELETE' });
         if (res.ok) {
-          document.querySelector(`tr[data-id="${id}"]`)?.remove();
+          const row = productTableBody.querySelector(`tr[data-id="${id}"]`);
+          if (row) row.remove();
           showToast(`Đã xóa "${name}" thành công!`);
         } else {
-          showToast('Lỗi khi xóa', true);
+          let errText = 'Lỗi khi xóa';
+          try {
+            const body = await res.json();
+            errText = body.error || JSON.stringify(body);
+          } catch (_) {
+            try { errText = await res.text(); } catch (_) {}
+          }
+          showToast(errText, true);
         }
       } catch (err) {
         console.error(err);
@@ -270,36 +246,40 @@
       }
     }
 
-    function openEdit(data) {
-      document.getElementById('editItemId').value = data.id;
-      document.getElementById('editItemName').value = data.name;
-      document.getElementById('editItemPrice').value = data.price;
-      document.getElementById('editItemStock').value = data.stock;
-      document.getElementById('editItemNew').value = data.isnew;
-      bootstrap.Modal.getOrCreateInstance(editItemModalEl).show();
+    // Open edit modal and populate fields
+    function openEdit(id, name, price, stock) {
+      document.getElementById('editItemId').value = id;
+      document.getElementById('editItemName').value = name;
+      document.getElementById('editItemPrice').value = price;
+      document.getElementById('editItemStock').value = stock;
+      const modal = bootstrap.Modal.getOrCreateInstance(editItemModalEl);
+      modal.show();
     }
 
+    // Add product
     document.getElementById('btnAddConfirm').addEventListener('click', async () => {
       const name = document.getElementById('itemName').value.trim();
       const price = parseFloat(document.getElementById('itemPrice').value) || 0;
       const stock = parseInt(document.getElementById('itemStock').value) || 0;
-      const isNew = document.getElementById('itemNew').value === 'true';
       if (!name || price <= 0 || stock < 0) {
-        showToast('Vui lòng nhập thông tin hợp lệ!', true);
+        showToast('Vui lòng nhập đủ thông tin hợp lệ!', true);
         return;
       }
       try {
         const res = await fetch('/api/products', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name, price, stock, isNew })
+          body: JSON.stringify({ name, price, stock })
         });
         if (res.ok) {
           showToast('Thêm sản phẩm thành công!');
-          bootstrap.Modal.getOrCreateInstance(addItemModalEl).hide();
-          loadProducts();
+          const modal = bootstrap.Modal.getOrCreateInstance(addItemModalEl);
+          modal.hide();
+          await loadProducts();
         } else {
-          showToast('Lỗi khi thêm sản phẩm', true);
+          let err = 'Lỗi khi thêm sản phẩm';
+          try { const b = await res.json(); err = b.error || JSON.stringify(b); } catch(_) { try { err = await res.text(); } catch(_) {} }
+          showToast(err, true);
         }
       } catch (err) {
         console.error(err);
@@ -307,36 +287,34 @@
       }
     });
 
+    // Update product
     document.getElementById('btnUpdateConfirm').addEventListener('click', async () => {
       const id = document.getElementById('editItemId').value;
       const name = document.getElementById('editItemName').value.trim();
       const price = parseFloat(document.getElementById('editItemPrice').value) || 0;
       const stock = parseInt(document.getElementById('editItemStock').value) || 0;
-      const isNew = document.getElementById('editItemNew').value === 'true';
       if (!name || price <= 0 || stock < 0) {
-        showToast('Vui lòng nhập thông tin hợp lệ!', true);
+        showToast('Vui lòng nhập đủ thông tin hợp lệ!', true);
         return;
       }
       try {
         const res = await fetch(`/api/products/${id}`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name, price, stock, isNew })
+          body: JSON.stringify({ name, price, stock })
         });
         if (res.ok) {
           showToast('Cập nhật sản phẩm thành công!');
-          bootstrap.Modal.getOrCreateInstance(editItemModalEl).hide();
-          loadProducts();
+          const modal = bootstrap.Modal.getOrCreateInstance(editItemModalEl);
+          modal.hide();
+          await loadProducts();
         } else {
-          showToast('Lỗi khi cập nhật', true);
+          let err = 'Lỗi khi cập nhật sản phẩm';
+          try { const b = await res.json(); err = b.error || JSON.stringify(b); } catch(_) { try { err = await res.text(); } catch(_) {} }
+          showToast(err, true);
         }
       } catch (err) {
         console.error(err);
         showToast('Không thể kết nối server', true);
       }
     });
-
-    document.addEventListener('DOMContentLoaded', loadProducts);
-  </script>
-</body>
-</html>
