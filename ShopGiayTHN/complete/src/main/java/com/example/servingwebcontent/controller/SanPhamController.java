@@ -28,13 +28,14 @@ public class SanPhamController {
 
     // Lấy sản phẩm theo mã
     @GetMapping("/{maSp}")
-    public ResponseEntity<SanPham> getSanPhamById(@PathVariable String maSp) {
+    public ResponseEntity<SanPham> getSanPhamById(@PathVariable("maSp") String maSp) {
         try {
             SanPham sp = sanPhamAiven.getSanPhamById(maSp);
             if (sp != null) {
                 return ResponseEntity.ok(sp);
+            } else {
+                return ResponseEntity.notFound().build();
             }
-            return ResponseEntity.notFound().build();
         } catch (SQLException e) {
             e.printStackTrace();
             return ResponseEntity.internalServerError().build();
@@ -48,8 +49,9 @@ public class SanPhamController {
             boolean success = sanPhamAiven.createSanPham(sp);
             if (success) {
                 return ResponseEntity.ok("Thêm sản phẩm thành công");
+            } else {
+                return ResponseEntity.badRequest().body("Không thể thêm sản phẩm");
             }
-            return ResponseEntity.badRequest().body("Không thể thêm sản phẩm");
         } catch (SQLException e) {
             e.printStackTrace();
             return ResponseEntity.internalServerError().body("Lỗi server");
@@ -58,13 +60,15 @@ public class SanPhamController {
 
     // Cập nhật sản phẩm
     @PutMapping("/{maSpCu}")
-    public ResponseEntity<String> updateSanPham(@PathVariable String maSpCu, @RequestBody SanPham sp) {
+    public ResponseEntity<String> updateSanPham(@PathVariable("maSpCu") String maSpCu,
+                                                 @RequestBody SanPham sp) {
         try {
             boolean success = sanPhamAiven.updateSanPham(maSpCu, sp);
             if (success) {
                 return ResponseEntity.ok("Cập nhật sản phẩm thành công");
+            } else {
+                return ResponseEntity.notFound().build();
             }
-            return ResponseEntity.notFound().build();
         } catch (SQLException e) {
             e.printStackTrace();
             return ResponseEntity.internalServerError().body("Lỗi server");
@@ -73,13 +77,14 @@ public class SanPhamController {
 
     // Xóa sản phẩm
     @DeleteMapping("/{maSp}")
-    public ResponseEntity<String> deleteSanPham(@PathVariable String maSp) {
+    public ResponseEntity<String> deleteSanPham(@PathVariable("maSp") String maSp) {
         try {
             boolean success = sanPhamAiven.deleteSanPham(maSp);
             if (success) {
                 return ResponseEntity.ok("Xóa sản phẩm thành công");
+            } else {
+                return ResponseEntity.notFound().build();
             }
-            return ResponseEntity.notFound().build();
         } catch (SQLException e) {
             e.printStackTrace();
             return ResponseEntity.internalServerError().body("Lỗi server");

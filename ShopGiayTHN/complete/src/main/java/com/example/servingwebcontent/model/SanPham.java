@@ -1,21 +1,37 @@
 package com.example.servingwebcontent.model;
 
 public class SanPham {
-    private String name;
-    private double price;
-    private int size;
-    private String imageURL;
+    private String maSp;    // Mã sản phẩm
+    private String name;    // Tên sản phẩm
+    private double price;   // Giá
+    private int size;       // Kích thước
+    private String imageURL; // Link ảnh
 
-    public SanPham(String name, double price, int size, String imageURL) {
+    // Constructor mặc định (cần cho JSON mapping)
+    public SanPham() {
+    }
+
+    // Constructor đầy đủ
+    public SanPham(String maSp, String name, double price, int size, String imageURL) {
+        this.maSp = maSp;
         this.name = name;
         this.price = price;
         this.size = size;
         this.imageURL = imageURL;
     }
 
+    // Constructor chỉ với tên và giá
     public SanPham(String name, double price) {
         this.name = name;
         this.price = price;
+    }
+
+    public String getMaSp() {
+        return maSp;
+    }
+
+    public void setMaSp(String maSp) {
+        this.maSp = maSp;
     }
 
     public String getName() {
