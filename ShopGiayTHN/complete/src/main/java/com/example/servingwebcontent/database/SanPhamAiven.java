@@ -10,7 +10,6 @@ public class SanPhamTHNDAO {
 
     private final String jdbcUrl = "mysql://avnadmin:AVNS_RvswdzmuaXNGn0bnw24@mysql-33f61df4-st-621c.b.aivencloud.com:26201/defaultdb?ssl-mode=REQUIRED";
     private final String jdbcUsername = "avnadmin";
-    private final String jdbcPassword = "";
 
     private Connection getConnection() throws SQLException {
         return DriverManager.getConnection(jdbcUrl, jdbcUsername, jdbcPassword);
