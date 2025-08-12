@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Danh sách sản phẩm</title>
+</head>
+<body>
+<h1>Danh sách sản phẩm</h1>
+
+<a href="/sanpham/add">+ Thêm sản phẩm</a>
+<table border="1" cellpadding="5">
+    <thead>
+    <tr>
+        <th>Tên</th>
+        <th>Giá</th>
+        <th>Size</th>
+        <th>Hình ảnh</th>
+        <th>Hành động</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="sp : ${listSanPham}">
+        <td th:text="${sp.name}"></td>
+        <td th:text="${sp.price}"></td>
+        <td th:text="${sp.size}"></td>
+        <td>
+            <img th:src="${sp.imageURL}" alt="Image" width="80"/>
+        </td>
+        <td>
+            <a th:href="@{'/sanpham/edit/' + ${sp.name}}">Sửa</a> |
+            <a th:href="@{'/sanpham/delete/' + ${sp.name}}" onclick="return confirm('Xóa sản phẩm này?');">Xóa</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
