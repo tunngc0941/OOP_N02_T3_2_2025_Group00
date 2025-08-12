@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản Lý Khách Hàng</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background: #f4f4f4;
+        }
+        form {
+            margin-top: 20px;
+        }
+        input, button {
+            padding: 6px;
+            margin: 4px;
+        }
+        .btn-delete {
+            color: white;
+            background: red;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        .btn-edit {
+            color: white;
+            background: orange;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Quản Lý Khách Hàng</h1>
+
+<!-- Form thêm khách hàng -->
+<h3>Thêm khách hàng mới</h3>
+<form id="addForm">
+    <input type="text" id="ten" placeholder="Tên khách hàng" required>
+    <input type="text" id="sdt" placeholder="Số điện thoại" required>
+    <button type="submit">Thêm</button>
+</form>
+
+<!-- Bảng danh sách -->
+<h3>Danh sách khách hàng</h3>
+<table>
+    <thead>
+    <tr>
+        <th>Tên khách hàng</th>
+        <th>Số điện thoại</th>
+        <th>Hành động</th>
+    </tr>
+    </thead>
+    <tbody id="khachhang-table"></tbody>
+</table>
+
+<script>
+    const apiUrl = '/api/khachhang';
+
+    // Lấy danh sách khách hàng
+    async function loadKhachHang() {
+        const res = await fetch(apiUrl);
+        const data = await res.json();
+        const tbody = document.getElementById('khachhang-table');
+        tbody.innerHTML = '';
+        data.forEach(kh => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>${kh.ten}</td>
+                <td>${kh.sdt}</td>
+                <td>
+                    <button class="btn-edit" onclick="editKhachHang('${kh.sdt}', '${kh.ten}')">Sửa</button>
+                    <button class="btn-delete" onclick="deleteKhachHang('${kh.sdt}')">Xóa</button>
+                </td>
+            `;
+            tbody.appendChild(tr);
+        });
+    }
+
+    // Thêm khách hàng mới
+    document.getElementById('addForm').addEventListener('submit', async e => {
+        e.preventDefault();
+        const ten = document.getElementById('ten').value;
+        const sdt = document.getElementById('sdt').value;
+        await fetch(apiUrl, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ten, sdt})
+        });
+        document.getElementById('addForm').reset();
+        loadKhachHang();
+    });
+
+    // Xóa khách hàng
+    async function deleteKhachHang(sdt) {
+        if (confirm('Bạn có chắc muốn xóa khách hàng này?')) {
+            await fetch(`${apiUrl}/${sdt}`, {method: 'DELETE'});
+            loadKhachHang();
+        }
+    }
+
+    // Sửa khách hàng
+    async function editKhachHang(sdtCu, tenCu) {
+        const tenMoi = prompt('Nhập tên mới:', tenCu);
+        const sdtMoi = prompt('Nhập số điện thoại mới:', sdtCu);
+        if (tenMoi && sdtMoi) {
+            await fetch(`${apiUrl}/${sdtCu}`, {
+                method: 'PUT',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ten: tenMoi, sdt: sdtMoi})
+            });
+            loadKhachHang();
+        }
+    }
+
+    // Tải danh sách ban đầu
+    loadKhachHang();
+</script>
+
+</body>
+</html>

@@ -54,7 +54,7 @@ public class GiaoDichAiven {
                                            .toLocalDateTime();
 
                 // Tạo đối tượng GiaoDich
-                GiaoDich gd = new GiaoDich(khachHang = kh, sanPham = sp, thoiGian = thoiGian);
+                GiaoDich gd = new GiaoDich(kh, sp, thoiGian);
                 list.add(gd);
             }
         }

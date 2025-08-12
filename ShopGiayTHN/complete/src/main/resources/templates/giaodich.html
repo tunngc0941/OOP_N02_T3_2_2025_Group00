@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản Lý Giao Dịch</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+        th, td { border: 1px solid #ccc; padding: 8px; }
+        th { background: #f4f4f4; }
+        form { margin-top: 20px; }
+        input, select, button { padding: 6px; margin: 4px; }
+        .btn-delete {
+            color: white;
+            background: red;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Quản Lý Giao Dịch</h1>
+
+<!-- Form thêm giao dịch -->
+<h3>Thêm giao dịch mới</h3>
+<form id="addForm">
+    <label>Khách hàng:</label>
+    <select id="maKh" required></select>
+
+    <label>Sản phẩm:</label>
+    <select id="maSp" required></select>
+
+    <label>Thời gian:</label>
+    <input type="datetime-local" id="thoiGian" required>
+
+    <button type="submit">Thêm</button>
+</form>
+
+<!-- Bảng danh sách -->
+<h3>Danh sách giao dịch</h3>
+<table>
+    <thead>
+    <tr>
+        <th>Tên khách hàng</th>
+        <th>Sản phẩm</th>
+        <th>Giá</th>
+        <th>Thời gian</th>
+        <th>Hành động</th>
+    </tr>
+    </thead>
+    <tbody id="giaodich-table"></tbody>
+</table>
+
+<script>
+    const apiGD = '/api/giaodich';
+    const apiKH = '/api/khachhang';
+    const apiSP = '/api/sanpham'; // cần có API sản phẩm
+
+    // Load danh sách giao dịch
+    async function loadGiaoDich() {
+        const res = await fetch(apiGD);
+        const data = await res.json();
+        const tbody = document.getElementById('giaodich-table');
+        tbody.innerHTML = '';
+        data.forEach(gd => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>${gd.khachHang.ten}</td>
+                <td>${gd.sanPham.tenSp}</td>
+                <td>${gd.sanPham.gia}</td>
+                <td>${gd.thoiGian.replace('T', ' ')}</td>
+                <td>
+                    <button class="btn-delete" onclick="deleteGiaoDich('${gd.khachHang.maKh}', '${gd.sanPham.maSp}')">Xóa</button>
+                </td>
+            `;
+            tbody.appendChild(tr);
+        });
+    }
+
+    // Load dropdown khách hàng
+    async function loadKhachHangOptions() {
+        const res = await fetch(apiKH);
+        const data = await res.json();
+        const select = document.getElementById('maKh');
+        select.innerHTML = '';
+        data.forEach(kh => {
+            const opt = document.createElement('option');
+            opt.value = kh.maKh;
+            opt.textContent = `${kh.ten} (${kh.sdt})`;
+            select.appendChild(opt);
+        });
+    }
+
+    // Load dropdown sản phẩm
+    async function loadSanPhamOptions() {
+        const res = await fetch(apiSP);
+        const data = await res.json();
+        const select = document.getElementById('maSp');
+        select.innerHTML = '';
+        data.forEach(sp => {
+            const opt = document.createElement('option');
+            opt.value = sp.maSp;
+            opt.textContent = `${sp.tenSp} - ${sp.gia}₫`;
+            select.appendChild(opt);
+        });
+    }
+
+    // Thêm giao dịch
+    document.getElementById('addForm').addEventListener('submit', async e => {
+        e.preventDefault();
+        const maKh = document.getElementById('maKh').value;
+        const maSp = document.getElementById('maSp').value;
+        const thoiGian = document.getElementById('thoiGian').value;
+
+        await fetch(apiGD, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                khachHang: { maKh },
+                sanPham: { maSp },
+                thoiGian
+            })
+        });
+
+        loadGiaoDich();
+    });
+
+    // Xóa giao dịch
+    async function deleteGiaoDich(maKh, maSp) {
+        if (confirm('Bạn có chắc muốn xóa giao dịch này?')) {
+            await fetch(`${apiGD}/${maKh}/${maSp}`, { method: 'DELETE' });
+            loadGiaoDich();
+        }
+    }
+
+    // Khởi chạy
+    loadKhachHangOptions();
+    loadSanPhamOptions();
+    loadGiaoDich();
+</script>
+
+</body>
+</html>
