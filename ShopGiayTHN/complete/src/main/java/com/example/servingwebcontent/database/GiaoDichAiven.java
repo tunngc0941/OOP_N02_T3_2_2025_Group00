@@ -12,9 +12,9 @@ import java.util.List;
 
 public class GiaoDichAiven {
 
-    private final String jdbcUrl = "jdbc:mysql://mysql-2954f5bb-opp-data.j.aivencloud.com:14833/thnshop?sslMode=REQUIRED";
+    private final String jdbcUrl = "mysql://avnadmin:AVNS_RvswdzmuaXNGn0bnw24@mysql-33f61df4-st-621c.b.aivencloud.com:26201/defaultdb?ssl-mode=REQUIRED";
     private final String jdbcUsername = "avnadmin";
-    private final String jdbcPassword = "AVNS_fIeg8rQ_jgkVDcDFWyn";
+    // private final String jdbcPassword = "AVNS_RvswdzmuaXNGn0bnw24";
 
     private Connection getConnection() throws SQLException {
         return DriverManager.getConnection(jdbcUrl, jdbcUsername, jdbcPassword);

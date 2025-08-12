@@ -4,37 +4,34 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+public class AivenConnection {
 
-
-
-public class aivenConnection {
-  
-    public void aivenConn() {
+    public void connectAndDisplayProducts() {
         Connection conn = null;
         try {
-
+            // Kết nối database qua class myDBConnection
             myDBConnection mydb = new myDBConnection();
-
             conn = mydb.getOnlyConn();
 
-             
-            Statement sta = conn.createStatement();
-            ResultSet reset = sta.executeQuery("select * from user");
-            System.out.println("Display data from database: ");
-            while (reset.next()) {
-                String userID = reset.getString("userId");
-                String username = reset.getString("username");
-                String address = reset.getString("address");
-                System.out.println(userID + " " + username + " " + address);
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT Name, Price, Size, ImageURL FROM sanpham");
 
+            System.out.println("Danh sách sản phẩm trong shop giày THN:");
+            while (rs.next()) {
+                String name = rs.getString("Name");
+                double price = rs.getDouble("Price");
+                int size = rs.getInt("Size");
+                String imageURL = rs.getString("ImageURL");
+
+                System.out.println("Tên: " + name + " | Giá: " + price + " | Size: " + size + " | Ảnh: " + imageURL);
             }
 
-            reset.close();
-            sta.close();
+            rs.close();
+            stmt.close();
             conn.close();
-        } catch (Exception e) {
-            System.out.println("Error in database connecion :" + e);
 
+        } catch (Exception e) {
+            System.out.println("Lỗi khi kết nối database: " + e.getMessage());
             e.printStackTrace();
         }
     }
