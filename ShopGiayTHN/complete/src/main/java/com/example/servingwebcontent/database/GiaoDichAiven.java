@@ -13,7 +13,7 @@ import java.util.List;
 public class GiaoDichAiven {
 
     // JDBC URL chuẩn MySQL
-    private final String jdbcUrl = "jdbc:mysql://mysql-33f61df4-st-621c.b.aivencloud.com:26201/defaultdb?ssl-mode=REQUIRED";
+    private final String jdbcUrl = "jdbc:mysql://mysql-33f61df4-st-621c.b.aivencloud.com:26201/defaultdb?sslMode=REQUIRED";
     private final String jdbcUsername = "avnadmin";
     private final String jdbcPassword = "AVNS_RvswdzmuaXNGn0bnw24";
 

@@ -9,7 +9,7 @@ import java.sql.Statement;
 @Component
 public class myDBConnection {
 
-    private final String myDatabaseURL = "mysql://avnadmin:AVNS_RvswdzmuaXNGn0bnw24@mysql-33f61df4-st-621c.b.aivencloud.com:26201/defaultdb?ssl-mode=REQUIRED";
+    private final String myDatabaseURL ="jdbc:mysql://mysql-33f61df4-st-621c.b.aivencloud.com:26201/defaultdb?sslMode=REQUIRED";
     private final String username = "avnadmin";  
     private final String password = "AVNS_RvswdzmuaXNGn0bnw24"; 
     private final String myDatabaseDriver = "com.mysql.cj.jdbc.Driver";

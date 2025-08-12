@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "TestDBConnection",
+            "request": "launch",
+            "mainClass": "com.example.servingwebcontent.TestDBConnection",
+            "projectName": "serving-web-content-complete"
+        },
+        {
+            "type": "java",
             "name": "ServingWebContentApplication",
             "request": "launch",
             "mainClass": "com.example.servingwebcontent.ServingWebContentApplication",

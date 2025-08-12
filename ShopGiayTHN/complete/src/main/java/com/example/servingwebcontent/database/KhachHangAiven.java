@@ -8,7 +8,7 @@ import java.util.List;
 
 public class KhachHangAiven {
 
-    private final String jdbcUrl = "mysql://avnadmin:AVNS_RvswdzmuaXNGn0bnw24@mysql-33f61df4-st-621c.b.aivencloud.com:26201/defaultdb?ssl-mode=REQUIRED";
+    private final String jdbcUrl = "jdbc:mysql://mysql-33f61df4-st-621c.b.aivencloud.com:26201/defaultdb?sslMode=REQUIRED";
     private final String jdbcUsername = "avnadmin";
     private final String jdbcPassword = "AVNS_RvswdzmuaXNGn0bnw24"; 
 
