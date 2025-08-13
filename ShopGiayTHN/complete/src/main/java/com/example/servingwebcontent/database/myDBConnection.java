@@ -9,17 +9,18 @@ import java.sql.Statement;
 @Component
 public class myDBConnection {
 
-    private final String myDatabaseURL ="jdbc:mysql://mysql-33f61df4-st-621c.b.aivencloud.com:26201/defaultdb?sslMode=REQUIRED";
-    private final String username = "avnadmin";  
-    private final String password = "AVNS_RvswdzmuaXNGn0bnw24"; 
-    private final String myDatabaseDriver = "com.mysql.cj.jdbc.Driver";
+    public myDBConnection() {}
 
+    // URL JDBC đầy đủ (bao gồm user, password, ssl)
+    private final String myDatabaseURL = "mysql://avnadmin:AVNS_RvswdzmuaXNGn0bnw24@mysql-33f61df4-st-621c.b.aivencloud.com:26201/defaultdb?ssl-mode=REQUIRED";
+        
+    private final String myDatabaseDriver = "com.mysql.cj.jdbc.Driver";
     private Connection conn = null;
 
     public Connection getConnection() {
         try {
             Class.forName(myDatabaseDriver);
-            return DriverManager.getConnection(myDatabaseURL, username, password);
+            return DriverManager.getConnection(myDatabaseURL);
         } catch (Exception e) {
             throw new RuntimeException("Database connection failed", e);
         }
@@ -28,7 +29,7 @@ public class myDBConnection {
     public Statement getMyConn() {
         try {
             Class.forName(myDatabaseDriver);
-            conn = DriverManager.getConnection(myDatabaseURL, username, password);
+            conn = DriverManager.getConnection(myDatabaseURL);
             return conn.createStatement();
         } catch (Exception e) {
             System.out.println("myDBConnection at getMyConn() error: " + e);
@@ -39,7 +40,7 @@ public class myDBConnection {
     public Connection getOnlyConn() {
         try {
             Class.forName(myDatabaseDriver);
-            conn = DriverManager.getConnection(myDatabaseURL, username, password);
+            conn = DriverManager.getConnection(myDatabaseURL);
             return conn;
         } catch (Exception e) {
             System.out.println("Database connection error: " + e);
