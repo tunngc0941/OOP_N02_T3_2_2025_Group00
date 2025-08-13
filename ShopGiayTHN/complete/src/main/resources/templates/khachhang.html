@@ -1,284 +1,277 @@
 <!DOCTYPE html>
 <html lang="vi">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>👥 Quản lý khách hàng - Shop Giày THN</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
-  <style>
-    body {
-      background: #f7f5f2;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-    .navbar-custom {
-      background-color: #2c3e50;
-    }
-    .navbar-custom .nav-link,
-    .navbar-custom .navbar-brand {
-      color: #ecf0f1;
-      font-weight: 600;
-    }
-    .navbar-custom .nav-link:hover {
-      color: #f39c12;
-    }
-    header {
-      background: url('https://plus.unsplash.com/premium_photo-1661422061155-b78d4a75f667?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center/cover no-repeat;
-      height: 280px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
-    }
-    header h1 {
-      font-size: 3.5rem;
-      background: rgba(44, 62, 80, 0.7);
-      padding: 20px 40px;
-      border-radius: 12px;
-    }
-    .card-menu {
-      background: #ffffff;
-      border-radius: 15px;
-      border: 1px solid #ddd;
-    }
-    .btn-order {
-      background: #2980b9;
-      color: white;
-      border: none;
-      transition: background-color 0.3s ease;
-    }
-    .btn-order:hover {
-      background: #1f618d;
-    }
-    .section-title {
-      margin-top: 40px;
-      margin-bottom: 25px;
-      font-weight: 700;
-      color: #34495e;
-    }
-    footer {
-      margin-top: 60px;
-      background: #2c3e50;
-      color: #bdc3c7;
-      padding: 15px 0;
-      text-align: center;
-      font-size: 0.9rem;
-    }
-  </style>
-</head>
-<body>
-
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-custom">
-    <div class="container">
-      <a class="navbar-brand" href="/main">🏠 Shop Giày THN</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
-        <span class="navbar-toggler-icon"><i class="bi bi-list" style="font-size:1.5rem; color:#ecf0f1;"></i></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navMain">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link" href="/main">Trang chủ</a></li>
-          <li class="nav-item"><a class="nav-link" href="/sanpham">Sản phẩm</a></li>
-          <li class="nav-item"><a class="nav-link active" href="/khachhang">Khách hàng</a></li>
-          <li class="nav-item"><a class="nav-link" href="/giaodich">Giao dịch</a></li>
-        </ul>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>👥 Quản lý khách hàng - Shop Giày THN</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background: #f7f5f2;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+      .navbar-custom {
+        background-color: #2c3e50;
+      }
+      .navbar-custom .nav-link,
+      .navbar-custom .navbar-brand {
+        color: #ecf0f1;
+        font-weight: 600;
+      }
+      .navbar-custom .nav-link:hover {
+        color: #f39c12;
+      }
+      header {
+        background: url('https://images.unsplash.com/photo-1576491110919-df70d852860f?q=80&w=1172&auto=format&fit=crop&ixlib=rb-4.1.0')
+          center/cover no-repeat;
+        height: 280px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+      }
+      header h1 {
+        font-size: 3.5rem;
+        background: rgba(44, 62, 80, 0.7);
+        padding: 20px 40px;
+        border-radius: 12px;
+      }
+      .card-menu {
+        background: #ffffff;
+        border-radius: 15px;
+        border: 1px solid #ddd;
+      }
+      .btn-order {
+        background: #2980b9;
+        color: white;
+        border: none;
+        transition: background-color 0.3s ease;
+      }
+      .btn-order:hover {
+        background: #1f618d;
+      }
+      .section-title {
+        margin-top: 40px;
+        margin-bottom: 25px;
+        font-weight: 700;
+        color: #34495e;
+      }
+      footer {
+        margin-top: 60px;
+        background: #2c3e50;
+        color: #bdc3c7;
+        padding: 15px 0;
+        text-align: center;
+        font-size: 0.9rem;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-custom">
+      <div class="container">
+        <a class="navbar-brand" href="#">🏠 Shop Giày THN</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navMain"
+        >
+          <span class="navbar-toggler-icon"
+            ><i class="bi bi-list" style="font-size: 1.5rem; color: #ecf0f1"></i
+          ></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navMain">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="/main">Trang chủ</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/sanpham">Sản phẩm</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/khachhang">Khách hàng</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/giaodich">Giao dịch</a>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </nav>
+    </nav>
 
-  <!-- Banner -->
-  <header>
-    <h1>Quản lý Khách hàng</h1>
-  </header>
+    <!-- Banner -->
+    <header>
+      <h1>Quản lý Khách hàng</h1>
+    </header>
 
-  <!-- Main content -->
-  <main class="container my-5">
+    <!-- Main content -->
+    <main class="container my-5">
+      <h2 class="section-title text-center">Danh sách Khách hàng</h2>
 
-    <h2 class="section-title text-center">Danh sách Khách hàng</h2>
+      <!-- Table hiển thị khách hàng -->
+      <div class="table-responsive mb-4">
+        <table class="table table-striped table-bordered align-middle">
+          <thead class="table-dark">
+            <tr>
+              <th>#</th>
+              <th>Tên khách hàng</th>
+              <th>Số điện thoại</th>
+              <th>Hành động</th>
+            </tr>
+          </thead>
+          <tbody id="khachhang-list">
+            <!-- Dữ liệu khách hàng sẽ load vào đây -->
+          </tbody>
+        </table>
+      </div>
 
-    <!-- Table hiển thị khách hàng -->
-    <div class="table-responsive mb-4">
-      <table class="table table-striped table-bordered align-middle">
-        <thead class="table-dark">
-          <tr>
-            <th>#</th>
-            <th>Tên khách hàng</th>
-            <th>Số điện thoại</th>
-            <th>Hành động</th>
-          </tr>
-        </thead>
-        <tbody id="khachhang-list">
-          <!-- Dữ liệu khách hàng sẽ load vào đây -->
-        </tbody>
-      </table>
-    </div>
+      <!-- Form thêm / sửa khách hàng -->
+      <div class="card card-menu p-4 shadow-sm">
+        <h4 class="mb-3">Thêm / Cập nhật Khách hàng</h4>
+        <form id="form-khachhang">
+          <div class="mb-3">
+            <label for="ten" class="form-label">Tên khách hàng</label>
+            <input
+              type="text"
+              class="form-control"
+              id="ten"
+              placeholder="Nhập tên khách hàng"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="sdt" class="form-label">Số điện thoại</label>
+            <input
+              type="text"
+              class="form-control"
+              id="sdt"
+              placeholder="Nhập số điện thoại"
+              required
+            />
+          </div>
+          <input type="hidden" id="sdtCu" />
+          <button type="submit" class="btn btn-primary btn-order">
+            Lưu thông tin
+          </button>
+          <button type="button" class="btn btn-secondary ms-2" id="btn-reset">
+            Xóa form
+          </button>
+        </form>
+      </div>
+    </main>
 
-    <!-- Form thêm / sửa khách hàng -->
-    <div class="card card-menu p-4 shadow-sm">
-      <h4 class="mb-3">Thêm / Cập nhật Khách hàng</h4>
-      <form id="form-khachhang">
-        <div class="mb-3">
-          <label for="ten" class="form-label">Tên khách hàng</label>
-          <input type="text" class="form-control" id="ten" placeholder="Nhập tên khách hàng" required />
-        </div>
-        <div class="mb-3">
-          <label for="sdt" class="form-label">Số điện thoại</label>
-          <input type="text" class="form-control" id="sdt" placeholder="Nhập số điện thoại" required pattern="\\d+" title="Chỉ nhập số" />
-        </div>
-        <input type="hidden" id="sdtCu" />
-        <button type="submit" class="btn btn-primary btn-order">Lưu thông tin</button>
-        <button type="button" class="btn btn-secondary ms-2" id="btn-reset">Xóa form</button>
-      </form>
-    </div>
+    <footer>&copy; 2025 Shop Giày THN - Hệ thống quản lý bán hàng</footer>
 
-  </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-  <footer>
-    &copy; 2025 Shop Giày THN - Hệ thống quản lý bán hàng
-  </footer>
+    <script>
+      const listEl = document.getElementById('khachhang-list');
+      const form = document.getElementById('form-khachhang');
+      const tenInput = document.getElementById('ten');
+      const sdtInput = document.getElementById('sdt');
+      const sdtCuInput = document.getElementById('sdtCu');
+      const btnReset = document.getElementById('btn-reset');
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+      // Lấy dữ liệu từ localStorage hoặc dùng dữ liệu mẫu
+      let khachHangData = JSON.parse(localStorage.getItem('khachHangData')) || [
+        { ten: 'Nguyễn Văn A', sdt: '0912345678' },
+        { ten: 'Trần Thị B', sdt: '0987654321' },
+        { ten: 'Phạm Văn C', sdt: '0905123456' },
+        { ten: 'Lê Thị D', sdt: '0933344455' },
+      ];
 
-  <script>
-    const apiBase = '/api/khachhang';
+      // Hàm lưu dữ liệu vào localStorage
+      function saveData() {
+        localStorage.setItem('khachHangData', JSON.stringify(khachHangData));
+      }
 
-    // Elements
-    const listEl = document.getElementById('khachhang-list');
-    const form = document.getElementById('form-khachhang');
-    const tenInput = document.getElementById('ten');
-    const sdtInput = document.getElementById('sdt');
-    const sdtCuInput = document.getElementById('sdtCu');
-    const btnReset = document.getElementById('btn-reset');
-
-    // Load danh sách khách hàng từ API
-    async function loadKhachHang() {
-      try {
-        const res = await fetch(apiBase);
-        if (!res.ok) throw new Error('Không lấy được dữ liệu khách hàng');
-        const data = await res.json();
-
+      function loadKhachHang() {
         listEl.innerHTML = '';
-        if (data.length === 0) {
+        if (khachHangData.length === 0) {
           listEl.innerHTML = `<tr><td colspan="4" class="text-center">Chưa có khách hàng nào.</td></tr>`;
           return;
         }
 
-        data.forEach((kh, idx) => {
+        khachHangData.forEach((kh, idx) => {
           const tr = document.createElement('tr');
           tr.innerHTML = `
-            <td>${idx + 1}</td>
-            <td>${kh.ten}</td>
-            <td>${kh.sdt}</td>
-            <td>
-              <button class="btn btn-sm btn-warning me-2" onclick="editKhachHang('${kh.sdt}')">
-                <i class="bi bi-pencil-square"></i> Sửa
-              </button>
-              <button class="btn btn-sm btn-danger" onclick="deleteKhachHang('${kh.sdt}')">
-                <i class="bi bi-trash"></i> Xóa
-              </button>
-            </td>
-          `;
+          <td>${idx + 1}</td>
+          <td>${kh.ten}</td>
+          <td>${kh.sdt}</td>
+          <td>
+            <button class="btn btn-sm btn-warning me-2" onclick="editKhachHang('${
+              kh.sdt
+            }')">
+              <i class="bi bi-pencil-square"></i> Sửa
+            </button>
+            <button class="btn btn-sm btn-danger" onclick="deleteKhachHang('${
+              kh.sdt
+            }')">
+              <i class="bi bi-trash"></i> Xóa
+            </button>
+          </td>
+        `;
           listEl.appendChild(tr);
         });
-
-      } catch (error) {
-        listEl.innerHTML = `<tr><td colspan="4" class="text-danger text-center">Lỗi tải dữ liệu: ${error.message}</td></tr>`;
-      }
-    }
-
-    // Xóa form
-    function resetForm() {
-      tenInput.value = '';
-      sdtInput.value = '';
-      sdtCuInput.value = '';
-      form.querySelector('button[type="submit"]').textContent = 'Lưu thông tin';
-    }
-
-    btnReset.addEventListener('click', resetForm);
-
-    // Thêm hoặc cập nhật khách hàng
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      const ten = tenInput.value.trim();
-      const sdt = sdtInput.value.trim();
-      const sdtCu = sdtCuInput.value;
-
-      if (!ten || !sdt) {
-        alert('Vui lòng nhập đầy đủ thông tin');
-        return;
       }
 
-      try {
-        let res;
+      function resetForm() {
+        tenInput.value = '';
+        sdtInput.value = '';
+        sdtCuInput.value = '';
+        form.querySelector('button[type="submit"]').textContent =
+          'Lưu thông tin';
+      }
+
+      btnReset.addEventListener('click', resetForm);
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const ten = tenInput.value.trim();
+        const sdt = sdtInput.value.trim();
+        const sdtCu = sdtCuInput.value;
 
         if (sdtCu) {
           // Cập nhật
-          res = await fetch(`${apiBase}/${encodeURIComponent(sdtCu)}`, {
-            method: 'PUT',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({ten, sdt})
-          });
+          const idx = khachHangData.findIndex((kh) => kh.sdt === sdtCu);
+          if (idx !== -1) khachHangData[idx] = { ten, sdt };
         } else {
           // Thêm mới
-          res = await fetch(apiBase, {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({ten, sdt})
-          });
+          khachHangData.push({ ten, sdt });
         }
 
-        if (res.ok) {
-          alert(await res.text());
-          resetForm();
-          loadKhachHang();
-        } else {
-          const errorMsg = await res.text();
-          alert('Lỗi: ' + errorMsg);
-        }
-      } catch (error) {
-        alert('Lỗi kết nối: ' + error.message);
-      }
-    });
+        saveData(); // Lưu vào localStorage
+        resetForm();
+        loadKhachHang();
+      });
 
-    // Sửa khách hàng
-    async function editKhachHang(sdt) {
-      try {
-        const res = await fetch(`${apiBase}/${encodeURIComponent(sdt)}`);
-        if (!res.ok) throw new Error('Không tìm thấy khách hàng');
-
-        const kh = await res.json();
+      function editKhachHang(sdt) {
+        const kh = khachHangData.find((kh) => kh.sdt === sdt);
+        if (!kh) return;
         tenInput.value = kh.ten;
         sdtInput.value = kh.sdt;
         sdtCuInput.value = kh.sdt;
         form.querySelector('button[type="submit"]').textContent = 'Cập nhật';
-        window.scrollTo({top: 0, behavior: 'smooth'});
-      } catch (error) {
-        alert(error.message);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
-    }
 
-    // Xóa khách hàng
-    async function deleteKhachHang(sdt) {
-      if (!confirm('Bạn có chắc muốn xóa khách hàng này?')) return;
-
-      try {
-        const res = await fetch(`${apiBase}/${encodeURIComponent(sdt)}`, {method: 'DELETE'});
-        if (res.ok) {
-          alert(await res.text());
-          loadKhachHang();
-        } else {
-          alert('Lỗi khi xóa khách hàng');
-        }
-      } catch (error) {
-        alert('Lỗi kết nối: ' + error.message);
+      function deleteKhachHang(sdt) {
+        if (!confirm('Bạn có chắc muốn xóa khách hàng này?')) return;
+        khachHangData = khachHangData.filter((kh) => kh.sdt !== sdt);
+        saveData(); // Lưu vào localStorage
+        loadKhachHang();
       }
-    }
 
-    // Khởi động
-    loadKhachHang();
-  </script>
-
-</body>
+      loadKhachHang();
+    </script>
+  </body>
 </html>
