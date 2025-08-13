@@ -1,63 +1,62 @@
 package com.example.servingwebcontent.database;
 
-import org.springframework.stereotype.Component;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.lang.Class;
 import java.sql.Statement;
 
-@Component
+
 public class myDBConnection {
 
-    public myDBConnection() {}
+    public myDBConnection() {
+    };
 
-    // URL JDBC đầy đủ (bao gồm user, password, ssl)
-    private final String myDatabaseURL = "mysql://avnadmin:AVNS_RvswdzmuaXNGn0bnw24@mysql-33f61df4-st-621c.b.aivencloud.com:26201/defaultdb?ssl-mode=REQUIRED";
-        
-    private final String myDatabaseDriver = "com.mysql.cj.jdbc.Driver";
-    private Connection conn = null;
+  
+    String myDatabaseURL = "jdbc:mysql://avnadmin:AVNS_RvswdzmuaXNGn0bnw24@mysql-33f61df4-st-621c.b.aivencloud.com:26201/defaultdb?ssl-mode=REQUIRED";
 
-    public Connection getConnection() {
-        try {
-            Class.forName(myDatabaseDriver);
-            return DriverManager.getConnection(myDatabaseURL);
-        } catch (Exception e) {
-            throw new RuntimeException("Database connection failed", e);
-        }
-    }
+    String myDatabaseDriver = "com.mysql.cj.jdbc.Driver";
+
+    public Connection conn = null;
 
     public Statement getMyConn() {
+
         try {
+
             Class.forName(myDatabaseDriver);
             conn = DriverManager.getConnection(myDatabaseURL);
-            return conn.createStatement();
+            Statement sta = conn.createStatement();
+            return sta;
+
         } catch (Exception e) {
-            System.out.println("myDBConnection at getMyConn() error: " + e);
+            System.out.println("myDBConnection at 34" + e);
         }
+
         return null;
+
     }
 
     public Connection getOnlyConn() {
         try {
             Class.forName(myDatabaseDriver);
+
             conn = DriverManager.getConnection(myDatabaseURL);
             return conn;
+
         } catch (Exception e) {
             System.out.println("Database connection error: " + e);
         }
-        return null;
+
+        return conn;
+
     }
 
-    public boolean testConnection() {
-        try (Connection conn = getOnlyConn()) {
-            if (conn != null && !conn.isClosed()) {
-                System.out.println("Database connection test successful");
-                return true;
-            }
+     public boolean testConnection() {
+        try (Connection connection = getOnlyConn()) {
+            return connection != null && !connection.isClosed();
         } catch (Exception e) {
-            System.out.println("Database connection test failed: " + e.getMessage());
-            e.printStackTrace();
+            System.out.println("Test connection failed: " + e);
+            return false;
         }
-        return false;
     }
 }
