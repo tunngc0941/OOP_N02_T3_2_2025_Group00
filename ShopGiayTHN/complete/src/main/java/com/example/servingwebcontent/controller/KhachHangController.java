@@ -12,7 +12,11 @@ import java.util.List;
 @RequestMapping("/api/khachhang")
 public class KhachHangController {
 
-    private final KhachHangAiven khachHangAiven = new KhachHangAiven();
+    private final KhachHangAiven khachHangAiven;
+
+    public KhachHangController(KhachHangAiven khachHangAiven) {
+        this.khachHangAiven = khachHangAiven;
+    }
 
     // Lấy tất cả khách hàng
     @GetMapping

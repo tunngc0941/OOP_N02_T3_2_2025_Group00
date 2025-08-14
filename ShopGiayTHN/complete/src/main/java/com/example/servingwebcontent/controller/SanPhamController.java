@@ -12,7 +12,11 @@ import java.util.List;
 @RequestMapping("/api/sanpham")
 public class SanPhamController {
 
-    private final SanPhamAiven sanPhamAiven = new SanPhamAiven();
+    private final SanPhamAiven sanPhamAiven;
+
+    public SanPhamController(SanPhamAiven sanPhamAiven) {
+        this.sanPhamAiven = sanPhamAiven;
+    }
 
     // Lấy tất cả sản phẩm
     @GetMapping

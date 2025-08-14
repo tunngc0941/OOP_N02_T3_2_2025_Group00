@@ -12,7 +12,11 @@ import java.util.List;
 @RequestMapping("/api/giaodich")
 public class GiaoDichController {
 
-    private final GiaoDichAiven giaoDichAiven = new GiaoDichAiven();
+    private final GiaoDichAiven giaoDichAiven;
+
+    public GiaoDichController(GiaoDichAiven giaoDichAiven) {
+        this.giaoDichAiven = giaoDichAiven;
+    }
 
     // Lấy tất cả giao dịch
     @GetMapping
