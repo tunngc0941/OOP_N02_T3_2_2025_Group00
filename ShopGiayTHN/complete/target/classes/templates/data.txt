@@ -1,52 +1,4 @@
-let giaoDichData = JSON.parse(localStorage.getItem('giaoDichData')) || [];
-      let khachHangData =
-        JSON.parse(localStorage.getItem('khachHangData')) ||
-        [
-          { ten: 'Hoàng Văn Vở', sdt: '0912345678' },
-          { ten: 'Hoàng Minh Thái', sdt: '0987654321' },
-          { ten: 'Hoàng Nhật Bảo Trâm', sdt: '0905123456' },
-          { ten: 'Hoàng Quang Lâm', sdt: '0933344455' },
-          { ten: 'Nguyễn Văn Hào', sdt: '0354622898' },
-          { ten: 'Đặng Ngọc Khuê', sdt: '0985794256' },
-          { ten: 'Ngô Đức Khang', sdt: '0972539940' },
-          { ten: 'Ngọ Tâm Ngọc', sdt: '0967893309' },
-        ];
-      let sanPhamData =
-        JSON.parse(localStorage.getItem('sanPhamData')) ||
-        [
-          {
-            maSp: 'SP001',
-            name: 'Giày Sneaker Nam Trắng',
-            price: 650000,
-            size: 42,
-            imageURL: 'https://via.placeholder.com/100x60?text=Sneaker+Trắng',
-          },
-          {
-            maSp: 'SP002',
-            name: 'Giày Thể Thao Nữ Hồng',
-            price: 720000,
-            size: 38,
-            imageURL: 'https://via.placeholder.com/100x60?text=Sneaker+Hồng',
-          },
-          {
-            maSp: 'SP003',
-            name: 'Giày Đá Banh Nike',
-            price: 1250000,
-            size: 43,
-            imageURL: 'https://via.placeholder.com/100x60?text=Nike+Football',
-          },
-          {
-            maSp: 'SP004',
-            name: 'Giày Tây Da Đen',
-            price: 890000,
-            size: 41,
-            imageURL: 'https://via.placeholder.com/100x60?text=Giày+Tây',
-          },
-        ];
-
-
-
-        let products = JSON.parse(localStorage.getItem('sanPhamData')) || [
+let products = JSON.parse(localStorage.getItem('sanPhamData')) || [
         {
           maSp: 'SP001',
           name: 'Giày Sneaker Nam Trắng',
@@ -90,3 +42,16 @@ let giaoDichData = JSON.parse(localStorage.getItem('giaoDichData')) || [];
           imageURL: 'https://images.unsplash.com/photo-1511556532299-8f662fc26c06?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
         },
       ];
+
+
+let khachHangData = JSON.parse(localStorage.getItem('khachHangData')) || [
+        { ten: 'Hoàng Văn Vở', sdt: '0912345678' },
+        { ten: 'Hoàng Minh Thái', sdt: '0987654321' },
+        { ten: 'Hoàng Nhật Bảo Trâm', sdt: '0905123456' },
+        { ten: 'Hoàng Quang Lâm', sdt: '0933344455' },
+        { ten: 'Nguyễn Văn Hào', sdt: '0354622898' },
+        { ten: 'Đặng Ngọc Khuê', sdt: '0985794256' },
+        { ten: 'Ngô Đức Khang', sdt: '0972539940' },
+        { ten: 'Ngọ Tâm Ngọc', sdt: '0967893309' },
+      ];
+
