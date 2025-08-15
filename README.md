@@ -142,7 +142,7 @@ III.Giao diện quản lý bán giày
 
 4.Giao diện quản lý giao dịch
 
-<img src='anh/inhoadon.html'>
+<img src='anh/f2cc605f-fe11-4ac2-906c-d32110953d88.png'>
 
 VI. Kết luận
 Ba phương thức trên đại diện cho ba hoạt động cốt lõi của một hệ thống bán hàng cơ bản: nhập hàng – bán hàng – ghi nhận giao dịch. Nhóm đã thảo luận kỹ để đảm bảo tính logic, dễ mở rộng và phù hợp với mô hình hướng đối tượng trong Java.
