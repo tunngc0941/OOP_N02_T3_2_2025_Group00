@@ -1,11 +1,13 @@
 package com.example.servingwebcontent.database;
 
 import com.example.servingwebcontent.model.KhachHang;
+import org.springframework.stereotype.Repository;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class KhachHangAiven {
 
     private final String jdbcUrl = "jdbc:mysql://mysql-33f61df4-st-621c.b.aivencloud.com:26201/defaultdb?sslMode=REQUIRED";

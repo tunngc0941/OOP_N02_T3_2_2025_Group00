@@ -1,11 +1,13 @@
 package com.example.servingwebcontent.database;
 
 import com.example.servingwebcontent.model.SanPham;
+import org.springframework.stereotype.Repository;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class SanPhamAiven {
 
     // JDBC URL chuẩn cho MySQL (chú ý: thêm jdbc:mysql:// ở đầu)

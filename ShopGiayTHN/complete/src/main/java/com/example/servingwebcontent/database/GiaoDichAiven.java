@@ -3,6 +3,7 @@ package com.example.servingwebcontent.database;
 import com.example.servingwebcontent.model.GiaoDich;
 import com.example.servingwebcontent.model.KhachHang;
 import com.example.servingwebcontent.model.SanPham;
+import org.springframework.stereotype.Repository;
 
 import java.sql.*;
 import java.time.LocalDateTime;
@@ -10,6 +11,7 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class GiaoDichAiven {
 
     // JDBC URL chuẩn MySQL
